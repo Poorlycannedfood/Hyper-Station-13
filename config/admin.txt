@@ -1,0 +1,2 @@
+mos_ley.if = Game Master
+nukechicken64 = Host
