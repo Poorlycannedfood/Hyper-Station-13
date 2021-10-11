@@ -1,5 +1,5 @@
 <!-- Most valid html will work in here, excluding images. -->
 
-<h1 style="text-align: center;">Welcome to <span style="text-decoration: underline;"><strong><a title="discord" href="https://discord.gg/4VffFvST2e">EROStation</a><br /></strong></span></h1>
-<h2 style="text-align: center;">~The lewdest station in the whole galaxy~<span style="text-decoration: underline;"><strong><br /></strong></span></h2>
-<p style="text-align: center;">This is a downstream of hyperstation and is still in <strong>very</strong> early development. If you'd like to know about our plans for the future and stay in touch with the community, don't foget to join our <a title="discord" href="https://discord.gg/4VffFvST2e">Discord!</a></p>
+<h1 style="text-align: center;"><a title="https://discord.gg/H2Xf24fBDq" href="https://discord.gg/H2Xf24fBDq">Welcome to EROSTATION</a></h1>
+<h1 style="text-align: center;"><a title="https://discord.gg/H2Xf24fBDq" href="https://discord.gg/H2Xf24fBDq">~The lewdest station in the whole galaxy~<span style="text-decoration: underline;"><strong><br /></strong></span></a></h1>
+<p style="text-align: center;"><a title="https://discord.gg/H2Xf24fBDq" href="https://discord.gg/H2Xf24fBDq">This is a downstream of hyperstation and is still in <strong>very</strong> early development. If you'd like to know about our plans for the future and stay in touch with the community, don't foget to join our Discord!</a></p>
