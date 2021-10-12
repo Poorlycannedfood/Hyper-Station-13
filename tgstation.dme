@@ -3398,6 +3398,7 @@
 #include "modular_citadel\code\modules\vore\eating\vorepanel_vr.dm"
 #include "modular_citadel\interface\skin.dmf"
 #include "modular_eros\code\modules\clothing\masks\miscellaneous.dm"
+#include "modular_sand\code\__HELPERS\chat.dm"
 #include "modular_sand\code\modules\tgs\chat_commands.dm"
 #include "modular_sand\code\modules\tgs\custom_procs.dm"
 #include "yogstation\code\modules\power\energyharvester.dm"
