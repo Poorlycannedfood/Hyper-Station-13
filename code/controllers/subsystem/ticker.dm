@@ -68,6 +68,9 @@ SUBSYSTEM_DEF(ticker)
 
 	var/modevoted = FALSE					//Have we sent a vote for the gamemode?
 
+	var/station_integrity = 100				// stored at roundend for use in some antag goals
+	var/emergency_reason
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
@@ -156,8 +159,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			if(CONFIG_GET(flag/irc_announce_new_game))
-				world.TgsTargetedChatBroadcast("New round starting on [SSmapping.config.map_name]!", FALSE)
+			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -206,6 +208,7 @@ SUBSYSTEM_DEF(ticker)
 			check_queue()
 			check_maprotate()
 			scripture_states = scripture_unlock_alert(scripture_states)
+			//SSshuttle.autoEnd()
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
@@ -260,7 +263,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!GLOB.Debug2)
 		if(!can_continue)
 			log_game("[mode.name] failed pre_setup, cause: [mode.setup_error]")
-			send2irc("SSticker", "[mode.name] failed pre_setup, cause: [mode.setup_error]")
+			send2adminchat("SSticker", "[mode.name] failed pre_setup, cause: [mode.setup_error]")
 			message_admins("<span class='notice'>[mode.name] failed pre_setup, cause: [mode.setup_error]</span>")
 			QDEL_NULL(mode)
 			to_chat(world, "<B>Error setting up [GLOB.master_mode].</B> Reverting to pre-game lobby.")
@@ -326,7 +329,9 @@ SUBSYSTEM_DEF(ticker)
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
-	send2irc("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
+	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
+	if(CONFIG_GET(string/new_round_ping))
+		send2chat("<@&[CONFIG_GET(string/new_round_ping)]> | A new round has started on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -535,14 +540,17 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
-	var/news_source = "Kinaris News Network"
+	var/news_source = "Nanotrasen News Network"
 	switch(news_report)
 		if(NUKE_SYNDICATE_BASE)
 			news_message = "In a daring raid, the heroic crew of [station_name()] detonated a nuclear device in the heart of a terrorist base."
 		if(STATION_DESTROYED_NUKE)
 			news_message = "We would like to reassure all employees that the reports of a Syndicate backed nuclear attack on [station_name()] are, in fact, a hoax. Have a secure day!"
 		if(STATION_EVACUATED)
-			news_message = "The crew of [station_name()] has been evacuated amid unconfirmed reports of enemy activity."
+			if(emergency_reason)
+				news_message = "[station_name()] has been evacuated after transmitting the following distress beacon:\n\n[emergency_reason]"
+			else
+				news_message = "The crew of [station_name()] has been evacuated amid unconfirmed reports of enemy activity."
 		if(BLOB_WIN)
 			news_message = "[station_name()] was overcome by an unknown biological outbreak, killing all crew on board. Don't let it happen to you! Remember, a clean work station is a safe work station."
 		if(BLOB_NUKE)
@@ -568,7 +576,7 @@ SUBSYSTEM_DEF(ticker)
 		if(WIZARD_KILLED)
 			news_message = "Tensions have flared with the Space Wizard Federation following the death of one of their members aboard [station_name()]."
 		if(STATION_NUKED)
-			news_message = "[station_name()] activated its self destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
+			news_message = "[station_name()] activated its self-destruct device for unknown reasons. Attempts to clone the Captain so he can be arrested and executed are underway."
 		if(CLOCK_SUMMON)
 			news_message = "The garbled messages about hailing a mouse and strange energy readings from [station_name()] have been discovered to be an ill-advised, if thorough, prank by a clown."
 		if(CLOCK_SILICONS)
@@ -583,9 +591,10 @@ SUBSYSTEM_DEF(ticker)
 	if(SSblackbox.first_death)
 		var/list/ded = SSblackbox.first_death
 		if(ded.len)
-			news_message += " NT Sanctioned Psykers picked up faint traces of someone near the station, allegedly having had died. Their name was: [ded["name"]], [ded["role"]], at [ded["area"]].[ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""]"
+			var/last_words = ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""
+			news_message += "\nNT Sanctioned Psykers picked up faint traces of someone near the station, allegedly having had died. Their name was: [ded["name"]], [ded["role"]], at [ded["area"]].[last_words]"
 		else
-			news_message += " NT Sanctioned Psykers proudly confirm reports that nobody died this shift!"
+			news_message += "\nNT Sanctioned Psykers proudly confirm reports that nobody died this shift!"
 
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")
@@ -683,13 +692,16 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
+		'modular_sand/sound/roundend/seeyoulaterokay.ogg',
 		'sound/roundend/bangindonk.ogg',
 		'sound/roundend/leavingtg.ogg',
 		'sound/roundend/its_only_game.ogg',
 		'sound/roundend/yeehaw.ogg',
 		'sound/roundend/disappointed.ogg',
 		'sound/roundend/gondolabridge.ogg',
-		'sound/roundend/haveabeautifultime.ogg'\
+		'sound/roundend/haveabeautifultime.ogg',
+		'modular_sand/sound/roundend/CitadelStationHasSeenBetterDays.ogg',
+		'modular_sand/sound/roundend/approachingbaystation.ogg'\
 		)
 
 	SEND_SOUND(world, sound(round_end_sound))
