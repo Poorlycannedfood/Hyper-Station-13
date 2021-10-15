@@ -95,6 +95,7 @@
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE)
 	inherent_traits = list(TRAIT_NOGUNS)
 	mutantlungs = /obj/item/organ/lungs/ashwalker
+	mutanteyes = /obj/item/organ/eyes/night_vision/ashen
 	burnmod = 0.9
 	brutemod = 0.9
 
@@ -103,3 +104,7 @@
 		C.dna.features["tail_lizard"] = "Smooth"
 		C.update_body()
 	return ..()
+
+/obj/item/organ/eyes/night_vision/ashen
+	name = "ashen eyes"
+	desc = "A walker of the ash, blind to the horrors of the station."
