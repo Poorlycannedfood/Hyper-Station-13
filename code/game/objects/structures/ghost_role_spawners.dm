@@ -44,7 +44,6 @@
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "large_egg"
 	mob_species = /datum/species/lizard/ashwalker
-	outfit = /datum/outfit/ashwalker
 	roundstart = FALSE
 	death = FALSE
 	anchored = FALSE
