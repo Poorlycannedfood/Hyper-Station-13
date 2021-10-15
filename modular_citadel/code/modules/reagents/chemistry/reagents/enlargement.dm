@@ -109,7 +109,7 @@
 		return ..()
 
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
-	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
+	//var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles") No more missing testicles
 	var/obj/item/organ/genital/vagina/V = M.getorganslot("vagina")
 	var/obj/item/organ/genital/womb/W = M.getorganslot("womb")
 
@@ -120,8 +120,8 @@
 	if(P)
 		P.cached_length = P.cached_length - 0.05
 		P.update()
-	if(T)
-		T.Remove(M)
+	/*if(T)
+		T.Remove(M)*/ //No more missing testicles
 	if(!V)
 		var/obj/item/organ/genital/vagina/nV = new
 		nV.Insert(M)
