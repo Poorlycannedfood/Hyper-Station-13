@@ -180,10 +180,10 @@ VOTE_DELAY 6000
 VOTE_PERIOD 600
 
 ## autovote initial delay (deciseconds) before first automatic transfer vote call (default 120 minutes)
-VOTE_AUTOTRANSFER_INITIAL 72000
+VOTE_AUTOTRANSFER_INITIAL 108000
 
 ##autovote delay (deciseconds) before sequential automatic transfer votes are called (default 30 minutes)
-VOTE_AUTOTRANSFER_INTERVAL 18000
+VOTE_AUTOTRANSFER_INTERVAL 36000
 
 ## prevents dead players from voting or starting votes
 # NO_DEAD_VOTE
@@ -390,7 +390,7 @@ ALLOW_MAP_VOTING 1
 ## This is the chance of map rotation factored to the round length.
 ## A value of 1 would mean the map rotation chance is the round length in minutes (hour long round == 60% rotation chance)
 ## A value of 0.5 would mean the map rotation chance is half of the round length in minutes (hour long round == 30% rotation chance)
-#MAPROTATIONCHANCEDELTA 0.75
+MAPROTATIONCHANCEDELTA 0.75
 
 ## AUTOADMIN
 ## The default admin rank
