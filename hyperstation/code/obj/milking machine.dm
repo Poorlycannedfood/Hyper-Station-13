@@ -10,8 +10,8 @@
 	var/on = FALSE
 	var/obj/item/reagent_containers/glass/inserted_item = null
 
-	var/transfer_rate = 0.50 // How much we transfer every 2 seconds
 	var/target_organ  = "breasts" // What organ we are transfering from
+	var/inuse = 0
 
 /obj/item/milking_machine/examine(mob/user)
 	. = ..()
@@ -21,7 +21,7 @@
 
 /obj/item/milking_machine/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
-	if(istype(W, /obj/item/reagent_containers/glass) && !inserted_item)
+	if(istype(W, /obj/item/reagent_containers/) && !inserted_item)
 		if(!user.transferItemToLoc(W, src))
 			return ..()
 		inserted_item = W
@@ -35,10 +35,8 @@
 		on = !on
 		if (on)
 			to_chat(user, "<span class='notice'>You turn [src] on.</span>")
-			START_PROCESSING(SSobj, src)
 		else
 			to_chat(user, "<span class='notice'>You turn [src] off.</span>")
-			STOP_PROCESSING(SSobj, src)
 		UpdateIcon()
 	else
 		..()
@@ -53,31 +51,67 @@
 	user.put_in_hands(inserted_item)
 	inserted_item = null
 	on = FALSE
-	STOP_PROCESSING(SSobj, src)
 	UpdateIcon()
 
-/obj/item/milking_machine/process()
-	var/mob/living/carbon/W = loc
-	if (W)
-		var/obj/item/organ/genital/breasts/O = W.getorganslot(target_organ)
-		if (O)
-			if (O.reagents.total_volume >= transfer_rate * 2)
-				if (inserted_item.reagents.total_volume < inserted_item.reagents.maximum_volume)
-					O.reagents.trans_to(inserted_item.reagents, amount = transfer_rate)
-				else
-					to_chat(W, "<span class='notice'>[src] stops pumping. [inserted_item] is full.</span>")
-					on = FALSE
-					STOP_PROCESSING(SSobj, src)
-					UpdateIcon()
-
 /obj/item/milking_machine/penis
-	name = "penis milking machine"
+	name = "cock milker"
 	icon_state = "PenisOff"
 	item_state = "PenisOff"
 	desc = "A pocket sized pump and tubing assembly designed to collect and store products from the penis."
 
-	target_organ  = "testicles" // Since semen is stored in the balls
+	target_organ  = "penis"
 
 /obj/item/milking_machine/penis/UpdateIcon()
 	icon_state = "Penis[on ? "On" : "Off"][inserted_item ? "Beaker" : ""]"
 	item_state = icon_state
+
+/obj/item/milking_machine/attack(mob/living/carbon/human/C, mob/living/user)
+	if (!on)
+		to_chat(user, "<span class='notice'>You can't use the [src] while it's off.</span>")
+		return
+
+	var/obj/item/organ/genital/O = FALSE
+
+	// Checking if a valid organ is being passed
+	if(target_organ == "penis")
+		O = C.getorganslot("penis")
+	else if(target_organ == "breasts")
+		O = C.getorganslot("breasts")
+	else
+		to_chat(user, "<span class='notice'>You can't use the [src] on [C]'s [target_organ].</span>")
+		return
+
+	if(inuse == 1) //just to stop stacking and causing people to cum instantly
+		return
+	if(O&&O.is_exposed())
+		inuse = 1
+		if(!(C == user)) //if we are targeting someone else.
+			C.visible_message("<span class='userlove'>[user] is trying to put the [src] on [C]'s [target_organ].</span>",
+							  "<span class='userlove'>[user] is trying to use the [src] on your [target_organ].</span>")
+
+		if(!do_mob(user, C, 3 SECONDS)) //3 second delay
+			inuse = 0
+			return
+
+		//checked if not used on yourself, if not, carry on.
+		// playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound (replace with whirring sounds)
+		inuse = 0
+		if(!(C == user)) //lewd flavour text
+			C.visible_message("<span class='userlove'>[user] puts the [src] on [C]'s [target_organ].</span>",
+							  "<span class='userlove'>[user] pumps [C]'s [target_organ] using their [src].</span>")
+		else
+			user.visible_message("<span class='userlove'>[user] puts the [src] on [p_their()] [target_organ].</span>",
+								 "<span class='userlove'>You pump your [target_organ] with the [src].</span>")
+
+		if(prob(30)) //30% chance to make them moan.
+			C.emote("moan")
+
+		C.do_jitter_animation()
+		C.adjustArousalLoss(20) //make the target more aroused. (same ammount as the fleshlight)
+		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
+			C.mob_fill_container(O, inserted_item, src) //make them cum if they are over the edge.
+		return
+	else
+		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
+	inuse = 0
+	..()
