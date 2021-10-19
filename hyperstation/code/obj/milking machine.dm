@@ -10,6 +10,7 @@
 	var/on = FALSE
 	var/obj/item/reagent_containers/glass/inserted_item = null
 
+	var/engine_sound = 'sound/vehicles/carrev.ogg'
 	var/target_organ  = "breasts" // What organ we are transfering from
 	var/inuse = 0
 
@@ -78,30 +79,25 @@
 	else if(target_organ == "breasts")
 		O = C.getorganslot("breasts")
 	else
-		to_chat(user, "<span class='notice'>You can't use the [src] on [C]'s [target_organ].</span>")
+		to_chat(user, "<span class='notice'>You can't use the [src] on [C]'s [O.name].</span>")
 		return
 
 	if(inuse == 1) //just to stop stacking and causing people to cum instantly
 		return
 	if(O&&O.is_exposed())
 		inuse = 1
-		if(!(C == user)) //if we are targeting someone else.
-			C.visible_message("<span class='userlove'>[user] is trying to put the [src] on [C]'s [target_organ].</span>",
-							  "<span class='userlove'>[user] is trying to use the [src] on your [target_organ].</span>")
-
+		if(!(C == user)) //lewd flavour text
+			C.visible_message("<span class='userlove'>[user] vacuums [C]'s [O.name] with a [src].</span>", \
+							  "<span class='userlove'>[user] pumps [C]'s [O.name] using their [src].</span>")
+		else
+			user.visible_message("<span class='userlove'>You set the [src] to suck on your [O.name].</span>", \
+								 "<span class='userlove'>You pump your [O.name] with the [src].</span>")
+		playsound(src, engine_sound, 30, 1, -1)
 		if(!do_mob(user, C, 3 SECONDS)) //3 second delay
 			inuse = 0
 			return
-
-		//checked if not used on yourself, if not, carry on.
-		// playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound (replace with whirring sounds)
+		playsound(src, 'sound/lewd/slaps.ogg', 20, 1, -1)
 		inuse = 0
-		if(!(C == user)) //lewd flavour text
-			C.visible_message("<span class='userlove'>[user] puts the [src] on [C]'s [target_organ].</span>",
-							  "<span class='userlove'>[user] pumps [C]'s [target_organ] using their [src].</span>")
-		else
-			user.visible_message("<span class='userlove'>[user] puts the [src] on [p_their()] [target_organ].</span>",
-								 "<span class='userlove'>You pump your [target_organ] with the [src].</span>")
 
 		if(prob(30)) //30% chance to make them moan.
 			C.emote("moan")

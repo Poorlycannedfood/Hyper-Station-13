@@ -472,8 +472,9 @@
 
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, obj/item/milking_machine/M, mb_time = 30) //For beaker-filling, beware the bartender
-	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
+	var/total_fluids = null
+	var/main_fluid = null
 
 	if(G.name == "penis")//if the select organ is a penis
 		var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
@@ -491,15 +492,16 @@
 			return
 		fluid_source = G.linked_organ.reagents
 	total_fluids = fluid_source.total_volume
+	main_fluid = lowertext(fluid_source.get_master_reagent_name())
 
 	if(!container) //Something weird happened
 		to_chat(src, "<span class='warning'>You need a container to do this!</span>")
 		return
 
 	if(M) //Checking if a machine did it instead.
-		src.visible_message("<span class='love'>The [M] pumps faster, trying to get you over the edge.</span>", \
-							"<span class='userlove'>You feel a strong suction around your [G.name].</span>", \
-							"<span class='userlove'>The machine vacuums your [G.name] with a silent but powerfull vrrrr.</span>")
+		src.visible_message("<span class='love'>The [M] pumps faster, trying to get [src] over the edge.</span>", \
+							"<span class='userlove'>You hear a strong suction sound coming from the [M].</span>", \
+							"<span class='userlove'>The [M] vacuums [src]'s [G.name] with a quiet but powerfull vrrrr.</span>")
 	else
 		src.visible_message("<span class='love'>[src] starts to [G.masturbation_verb] their [G.name] over [container].</span>", \
 							"<span class='userlove'>You start to [G.masturbation_verb] your [G.name] over [container].</span>", \
@@ -507,12 +509,12 @@
 	if(do_after(src, mb_time, target = src) && in_range(src, container))
 		fluid_source.trans_to(container, total_fluids)
 		if(M)
-			src.visible_message("<span class='love'>The [M] sucks out all the [fluid_source] you've been saving up into it's [container]!</span>", \
-								"<span class='userlove'>Your [G.name]'s juices fill up the [container] with a total of [total_fluids]u's.</span>", \
-								"<span class='userlove'>You have relieved some pressure.</span>")
+			src.visible_message("<span class='love'>The [M] sucks out all the [main_fluid] [src] had been saving up into [container]!</span>", \
+								"<span class='userlove'>[src]'s [G.name] juices fill up the [container] with a total of [total_fluids]u's of [main_fluid].</span>", \
+								"<span class='userlove'>[src] moans in relief as [p_their()] [main_fluid] trickles into [container].</span>")
 		else
 			src.visible_message("<span class='love'>[src] uses [p_their()] [G.name] to fill [container]!</span>", \
-								"<span class='userlove'>You used your [G.name] and fill [container] with a total of [total_fluids]u of [fluid_source].</span>", \
+								"<span class='userlove'>You used your [G.name] and fill [container] with a total of [total_fluids]u of [main_fluid].</span>", \
 								"<span class='userlove'>You have relieved some pressure.</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 		container.add_cum_overlay() //your aim is bad...
