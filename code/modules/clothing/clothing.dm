@@ -273,7 +273,7 @@ BLIND     // can't see anything
 	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	if(attached_accessory)
+	if(attached_accessories.len)
 		remove_accessory(user)
 	else
 		rolldown()

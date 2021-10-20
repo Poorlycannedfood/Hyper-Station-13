@@ -1695,6 +1695,7 @@
 #include "code\modules\clothing\under\shorts.dm"
 #include "code\modules\clothing\under\syndicate.dm"
 #include "code\modules\clothing\under\trek.dm"
+#include "code\modules\clothing\under\tribal.dm"
 #include "code\modules\clothing\under\vg_under.dm"
 #include "code\modules\clothing\under\jobs\civilian.dm"
 #include "code\modules\clothing\under\jobs\engineering.dm"
