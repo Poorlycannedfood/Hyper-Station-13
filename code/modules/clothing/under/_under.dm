@@ -21,11 +21,6 @@
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 
-/obj/item/clothing/under/Destroy()
-	QDEL_LIST(attached_accessories)
-	QDEL_LIST(accessory_overlays)
-	return ..()
-	
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()
 	if(!isinhands)
