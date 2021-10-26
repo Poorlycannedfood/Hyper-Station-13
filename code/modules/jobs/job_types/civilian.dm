@@ -30,7 +30,7 @@ Clown
 	belt = /obj/item/pda/clown
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
-	ears = /obj/item/radio/headset/headset_srv  // EROS edit: Added Service Headset for the Clown.
+	ears = /obj/item/radio/headset/headset_srv  // EROS edit: Added Service Headset for the Mime.
 	mask = /obj/item/clothing/mask/gas/clown_hat
 	l_pocket = /obj/item/bikehorn
 	backpack_contents = list(
