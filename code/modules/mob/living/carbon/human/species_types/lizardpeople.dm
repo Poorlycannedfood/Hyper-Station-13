@@ -111,9 +111,9 @@
 		C.dna.features["has_cock"] = TRUE
 		C.dna.features["has_balls"] = TRUE
 		C.dna.features["cock_color"] = "A50021"
-		C.dna.features["cock_girth"] = 0.37 + (0.02 * rand(-4, prob(10) ? 5 : 1)) //chance for a bigger pleasure
+		C.dna.features["cock_girth"] = 0.78 + (0.02 * rand(-4, prob(10) ? 5 : 1)) //chance for a bigger pleasure
 		C.dna.features["cock_shape"] = "Tapered"
-		C.dna.features["cock_length"] = rand(4, prob(10) ? 9 : 7) + rand()
+		C.dna.features["cock_length"] = 0.5 + rand(4, prob(10) ? 9 : 6) + rand()
 		C.dna.features["balls_shape"] = "Hidden"
 	else
 		C.dna.features["has_vag"] = TRUE
@@ -123,3 +123,21 @@
 	C.give_genitals(1)
 	C.update_body()
 	return ..()
+
+/datum/species/lizard/ashwalker/eastern
+	name = "Eastern Ash Walker"
+	burnmod = 0.85
+	brutemod = 0.85
+
+/datum/species/lizard/ashwalker/eastern/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
+	C.dna.features["legs"] = "Digitigrade Legs"
+	return ..()
+
+/datum/species/lizard/ashwalker/western
+	name = "Western Ash Walker"
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS)
+
+/datum/species/lizard/ashwalker/western/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
+	C.dna.features["legs"] = "Normal Legs"
+	return ..()
+	
