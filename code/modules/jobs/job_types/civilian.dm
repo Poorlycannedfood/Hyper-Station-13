@@ -10,7 +10,7 @@ Clown
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
-	selection_color = "#dddddd"
+	selection_color = "#ffaddb" // EROS edit, original: #dddddd
 
 	outfit = /datum/outfit/job/clown
 
@@ -30,6 +30,7 @@ Clown
 	belt = /obj/item/pda/clown
 	uniform = /obj/item/clothing/under/rank/clown
 	shoes = /obj/item/clothing/shoes/clown_shoes
+	ears = /obj/item/radio/headset/headset_srv  // EROS edit: Added Service Headset for the Clown.
 	mask = /obj/item/clothing/mask/gas/clown_hat
 	l_pocket = /obj/item/bikehorn
 	backpack_contents = list(
@@ -77,7 +78,7 @@ Mime
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
-	selection_color = "#dddddd"
+	selection_color = "#ffffff" // EROS edit. Original: #dddddd
 
 	outfit = /datum/outfit/job/mime
 
@@ -97,6 +98,7 @@ Mime
 	uniform = /obj/item/clothing/under/rank/mime
 	mask = /obj/item/clothing/mask/gas/mime
 	gloves = /obj/item/clothing/gloves/color/white
+	ears = /obj/item/radio/headset/headset_srv		// EROS edit: Added Service Headset for the Mime.
 	head = /obj/item/clothing/head/frenchberet
 	suit = /obj/item/clothing/suit/suspenders
 	backpack_contents = list(/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing=1)
