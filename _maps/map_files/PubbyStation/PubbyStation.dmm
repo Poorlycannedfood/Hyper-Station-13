@@ -3462,6 +3462,7 @@
 	dir = 8
 	},
 /obj/structure/chair,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "agO" = (
@@ -3575,6 +3576,7 @@
 	pixel_x = -28
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "agX" = (
@@ -3616,6 +3618,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "ahc" = (
