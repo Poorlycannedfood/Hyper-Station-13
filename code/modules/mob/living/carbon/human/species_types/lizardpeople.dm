@@ -98,6 +98,9 @@
 	burnmod = 0.9
 	brutemod = 0.9
 
+#define HEAT_CYCLE_1 32
+#define HEAT_CYCLE_2 11
+
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	C.dna.features["tail_lizard"] = "Smooth"
 	C.dna.features["mcolor2"] = C.dna.features["mcolor"]
@@ -107,6 +110,9 @@
 	// i will personally shit down your throat if you make snowflake taur ashies with a tentacle 14 inch
 	// or whatever stupid oc shit you come up with possible
 	// my babies will stay pure even if it costs me my github account
+	C.add_quirk(TRAIT_HEAT_DETECT)
+	if(0 <= ((GLOB.round_id - (HEAT_CYCLE_2 + 1)) % HEAT_CYCLE_1) <= 2)
+		C.add_quirk(TRAIT_HEAT)
 	if(C.gender == MALE) 
 		C.dna.features["has_cock"] = TRUE
 		C.dna.features["has_balls"] = TRUE
@@ -123,6 +129,9 @@
 	C.give_genitals(1)
 	C.update_body()
 	return ..()
+
+#undef HEAT_CYCLE_1
+#undef HEAT_CYCLE_2
 
 /datum/species/lizard/ashwalker/eastern
 	name = "Eastern Ash Walker"

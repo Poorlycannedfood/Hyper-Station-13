@@ -125,7 +125,7 @@
 
 	//Heat Detection
 	if(breedable)
-		if(HAS_TRAIT(src, TRAIT_HEAT))
+		if(HAS_TRAIT(src, TRAIT_HEAT) && HAS_TRAIT(user, TRAIT_HEAT_DETECT))
 			. += "<span class='love'>[t_He] [t_is] currently in heat.</span>"
 
 	//CIT CHANGES START HERE - adds genital details to examine text

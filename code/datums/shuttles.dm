@@ -205,6 +205,7 @@
 	Has medical facilities."
 	credit_cost = 5000
 
+/*
 /datum/map_template/shuttle/emergency/russiafightpit
 	suffix = "russiafightpit"
 	name = "Mother Russia Bleeds"
@@ -218,6 +219,7 @@
 	description = "A hollowed out asteroid with engines strapped to it. Due to its size and difficulty in steering it, this shuttle may damage the docking area."
 	admin_notes = "This shuttle will likely crush escape, killing anyone there."
 	credit_cost = -5000
+*/
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
@@ -226,6 +228,7 @@
 	admin_notes = "Due to the limited space for non paying crew, this shuttle may cause a riot."
 	credit_cost = 10000
 
+/*
 /datum/map_template/shuttle/emergency/discoinferno
 	suffix = "discoinferno"
 	name = "Disco Inferno"
@@ -244,6 +247,7 @@
 	if("bubblegum" in SSshuttle.shuttle_purchase_requirements_met)
 		return TRUE
 	return FALSE
+*/
 
 /datum/map_template/shuttle/emergency/birdboat
 	suffix = "birdboat"
@@ -257,6 +261,7 @@
 	credit_cost = 2000
 	description = "The gold standard in emergency exfiltration, this tried and true design is equipped with everything the crew needs for a safe flight home."
 
+/*
 /datum/map_template/shuttle/emergency/clown
 	suffix = "clown"
 	name = "Snappop(tm)!"
@@ -267,6 +272,7 @@
 	Have a fun ride!"
 	admin_notes = "Brig is replaced by anchored greentext book surrounded by lavaland chasms, stationside door has been removed to prevent accidental dropping. No brig."
 	credit_cost = 8000
+*/
 
 /datum/map_template/shuttle/emergency/cramped
 	suffix = "cramped"
@@ -330,6 +336,7 @@
 	admin_notes = "Seriously big, even larger than the Delta shuttle."
 	credit_cost = 10000
 
+/*
 /datum/map_template/shuttle/emergency/supermatter
 	suffix = "supermatter"
 	name = "Hyperfractal Gigashuttle"
@@ -343,7 +350,6 @@
 	Emitters spawn powered on, expect admin notices, they are harmless."
 	credit_cost = 100000
 
-/*
 /datum/map_template/shuttle/emergency/imfedupwiththisworld
 	suffix = "imfedupwiththisworld"
 	name = "Oh, Hi Daniel"
