@@ -60,8 +60,8 @@
 	category = CATEGORY_SEXUAL
 	medical_record_text = "Patient has a higher sperm count."
 	mob_trait = TRAIT_VIRILE
-	gain_text = "<span class='notice'>You feel more potent."
-	lose_text = "<span class='notice'>You feel less potent."
+	gain_text = "<span class='notice'>You feel more potent.</span>"
+	lose_text = "<span class='notice'>You feel less potent.</span>"
 	var/ichange = 0
 
 /datum/quirk/virile/add()
@@ -78,8 +78,8 @@
 	value = 0
 	category = CATEGORY_SEXUAL
 	mob_trait = TRAIT_MACROPHILE
-	gain_text = "<span class='notice'>You feel attracted to people larger than you."
-	lose_text = "<span class='notice'>You feel less attracted to people larger than you."
+	gain_text = "<span class='notice'>You feel attracted to people larger than you.</span>"
+	lose_text = "<span class='notice'>You feel less attracted to people larger than you.</span>"
 
 /datum/quirk/microphile
 	name = "Microphile"
@@ -87,5 +87,5 @@
 	value = 0
 	category = CATEGORY_SEXUAL
 	mob_trait = TRAIT_MICROPHILE
-	gain_text = "<span class='notice'>You feel attracted to people smaller than you."
-	lose_text = "<span class='notice'>You feel less attracted to people smaller than you."
+	gain_text = "<span class='notice'>You feel attracted to people smaller than you.</span>"
+	lose_text = "<span class='notice'>You feel less attracted to people smaller than you.</span>"
