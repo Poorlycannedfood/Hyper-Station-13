@@ -110,12 +110,12 @@
 	// i will personally shit down your throat if you make snowflake taur ashies with a tentacle 14 inch
 	// or whatever stupid oc shit you come up with possible
 	// my babies will stay pure even if it costs me my github account
-	C.add_quirk(TRAIT_HEAT_DETECT)
+	ADD_TRAIT(C, TRAIT_HEAT_DETECT, SPECIES_TRAIT)
 	var/temp = text2num(GLOB.round_id)
-	var/tempish = ((temp - (HEAT_CYCLE_OFFSET + 1)) % HEAT_CYCLE_LENGTH)
-	if(tempish <= 2)
+	var/tempish = ((temp + (HEAT_CYCLE_OFFSET + 2)) % HEAT_CYCLE_LENGTH)
+	if(tempish <= 2 && tempish >= 0)
 		to_chat(C, "<span class='boldnotice'>It's this time again.. Your loins lay restless as they await a potential mate.</span>")
-		C.add_quirk(TRAIT_HEAT)
+		ADD_TRAIT(C, TRAIT_HEAT, SPECIES_TRAIT)
 	if(C.gender == MALE) 
 		C.dna.features["has_cock"] = TRUE
 		C.dna.features["has_balls"] = TRUE
