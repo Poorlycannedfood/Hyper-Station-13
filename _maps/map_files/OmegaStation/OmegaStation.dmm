@@ -37670,12 +37670,6 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
 "dXv" = (
-/obj/item/transfer_valve{
-	pixel_x = -5
-	},
-/obj/item/transfer_valve{
-	pixel_x = 5
-	},
 /obj/machinery/requests_console{
 	department = "Science";
 	departmentType = 2;

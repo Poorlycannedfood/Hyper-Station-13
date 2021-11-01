@@ -110476,20 +110476,6 @@
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "dEq" = (
-/obj/item/transfer_valve{
-	pixel_x = -5
-	},
-/obj/item/transfer_valve{
-	pixel_x = -5
-	},
-/obj/item/transfer_valve,
-/obj/item/transfer_valve,
-/obj/item/transfer_valve{
-	pixel_x = 5
-	},
-/obj/item/transfer_valve{
-	pixel_x = 5
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/requests_console{
 	department = "Toxins Lab";

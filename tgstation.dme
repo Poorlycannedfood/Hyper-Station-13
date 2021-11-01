@@ -3424,6 +3424,7 @@
 #include "modular_eros\code\game\object\items\circuitboards\machine_circuitboards.dm"
 #include "modular_eros\code\game\object\items\stacks\tiles\tile_types.dm"
 #include "modular_eros\code\game\object\structures\ghost_role_spawners.dm"
+#include "modular_eros\code\game\object\structures\tables_racks.dm"
 #include "modular_eros\code\game\object\structures\watercloset.dm"
 #include "modular_eros\code\game\object\structures\beds_chairs\chair.dm"
 #include "modular_eros\code\game\turfs\simulated\floor.dm"
