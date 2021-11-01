@@ -18998,7 +18998,7 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
 "aMu" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/incinerator_output{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/open/floor/engine/vacuum,
@@ -127694,7 +127694,7 @@
 /turf/open/floor/plasteel,
 /area/science/research)
 "xXn" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxins_mixing_output,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing)
 "xZM" = (

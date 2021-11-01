@@ -44146,7 +44146,7 @@
 /turf/open/floor/engine/vacuum,
 /area/science/mixing)
 "bMn" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/open/floor/engine/vacuum,
@@ -50287,7 +50287,7 @@
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
 "cbF" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/incinerator_output{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/open/floor/engine,

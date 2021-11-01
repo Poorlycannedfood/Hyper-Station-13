@@ -22218,7 +22218,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "evR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/incinerator_output{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/open/floor/engine,
@@ -40828,7 +40828,7 @@
 /turf/open/floor/plasteel/elevatorshaft,
 /area/ai_monitored/storage/satellite)
 "jjR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/open/floor/engine/vacuum,
