@@ -15405,7 +15405,7 @@
 /obj/item/storage/backpack/duffelbag/syndie/hitman{
 	contents = newlist(/obj/item/clothing/suit/armor/vest,/obj/item/gun/ballistic/automatic/pistol,/obj/item/suppressor,/obj/item/melee/classic_baton/telescopic,/obj/item/clothing/mask/balaclava,/obj/item/bodybag,/obj/item/soap/nanotrasen)
 	},
-/obj/item/card/id/silver,
+/obj/item/card/id/silver/reaper,
 /obj/item/lazarus_injector,
 /obj/item/gun/energy/e_gun/advtaser,
 /obj/item/clothing/neck/stethoscope,

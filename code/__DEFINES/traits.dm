@@ -58,6 +58,7 @@
 #define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
 
 //mob traits
+#define IGNORE_PSEUDO_Z_AXIS 	"ignore_pseudo_z_axis" //hate lol
 #define TRAIT_BLIND 			"blind"
 #define TRAIT_MUTE				"mute"
 #define TRAIT_EMOTEMUTE			"emotemute"
@@ -144,6 +145,7 @@
 #define TRAIT_NOMARROW			"nomarrow"		// You don't make blood, with chemicals or nanites.
 #define TRAIT_NOPULSE			"nopulse"		// Your heart doesn't beat.
 #define TRAIT_EXEMPT_HEALTH_EVENTS	"exempt-health-events"
+#define TRAIT_FLOORED			"floored" //can't stand up
 
  //non-mob traits
 #define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it
