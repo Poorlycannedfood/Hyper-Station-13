@@ -21921,6 +21921,20 @@
 	},
 /area/security/main)
 "ess" = (
+/obj/item/transfer_valve{
+	pixel_x = -5
+	},
+/obj/item/transfer_valve{
+	pixel_x = -5
+	},
+/obj/item/transfer_valve,
+/obj/item/transfer_valve,
+/obj/item/transfer_valve{
+	pixel_x = 5
+	},
+/obj/item/transfer_valve{
+	pixel_x = 5
+	},
 /obj/structure/table/reinforced,
 /obj/machinery/camera{
 	c_tag = "Toxins Lab Port";

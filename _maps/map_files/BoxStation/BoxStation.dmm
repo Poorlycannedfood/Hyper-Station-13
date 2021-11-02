@@ -46410,6 +46410,20 @@
 /turf/open/floor/plasteel/white,
 /area/science/mixing)
 "bWg" = (
+/obj/item/transfer_valve{
+	pixel_x = -5
+	},
+/obj/item/transfer_valve{
+	pixel_x = -5
+	},
+/obj/item/transfer_valve,
+/obj/item/transfer_valve,
+/obj/item/transfer_valve{
+	pixel_x = 5
+	},
+/obj/item/transfer_valve{
+	pixel_x = 5
+	},
 /obj/machinery/requests_console{
 	department = "Science";
 	departmentType = 2;
