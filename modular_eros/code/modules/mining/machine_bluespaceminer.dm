@@ -1,3 +1,4 @@
+/*
 /obj/machinery/mineral/bluespace_miner
 	name = "bluespace mining machine"
 	desc = "A machine that uses the magic of Bluespace to slowly generate materials and add them to a linked ore silo."
@@ -53,3 +54,4 @@
 				total_amount += amt
 		return (total_amount - total_amount_saved)
 	return FALSE
+*/

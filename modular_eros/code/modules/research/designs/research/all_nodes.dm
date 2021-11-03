@@ -1,3 +1,4 @@
+/*
 /datum/techweb_node/bs_mining
 	id = "bluespace_mining"
 	display_name = "Bluespace Mining Technology"
@@ -5,3 +6,4 @@
 	prereq_ids = list("practical_bluespace", "adv_mining")
 	design_ids = list("bluespace_miner")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+*/
