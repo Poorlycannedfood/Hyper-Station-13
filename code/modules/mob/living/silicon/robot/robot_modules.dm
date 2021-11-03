@@ -525,7 +525,7 @@
 		/obj/item/borg/sight/meson,
 		/obj/item/storage/bag/ore/cyborg,
 		/obj/item/pickaxe/drill/cyborg,
-		/obj/item/shovel,
+		/obj/item/twohanded/kinetic_crusher, // EROS/SPLURT edit. Replacing the shovel with the Kinetic Crusher.
 		/obj/item/crowbar/cyborg,
 		/obj/item/weldingtool/mini,
 		/obj/item/borg/cyborghug,
