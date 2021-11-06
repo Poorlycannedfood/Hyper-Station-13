@@ -32,6 +32,7 @@ SUBSYSTEM_DEF(input)
 		"default" = list(
 			"Tab" = "\".winset \\\"input.focus=true?map.focus=true input.background-color=[COLOR_INPUT_DISABLED]:input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 			"O" = "ooc",
+			"L" = "looc",
 			"Ctrl+O" = "looc",
 			"Ctrl+T" = "say_indicator",
 			"T" = "say_indicator",
@@ -50,6 +51,7 @@ SUBSYSTEM_DEF(input)
 		"old_hotkeys" = list(
 			"Tab" = "\".winset \\\"mainwindow.macro=old_default input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 			"O" = "ooc",
+			"L" = "looc",
 			"T" = "say_indicator",
 			"Ctrl+T" = "say_indicator",
 			"M" = "me_indicator",

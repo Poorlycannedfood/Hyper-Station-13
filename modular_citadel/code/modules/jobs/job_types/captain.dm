@@ -1,9 +1,9 @@
 /datum/job/captain
-	minimal_player_age = 3
+	minimal_player_age = 40
 //	exp_type = EXP_TYPE_COMMAND
 
 /datum/job/hop
-	minimal_player_age = 3
+	minimal_player_age = 40
 //	exp_type_department = EXP_TYPE_SERVICE
 
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,

@@ -13,13 +13,16 @@ Format:
 	disabled (disables the map)
 endmap
 
-map boxstation
+map layeniastation
 	default
+endmap
+
+map boxstation
 	#voteweight 1.5
 endmap
 
 map metastation
-	minplayers 25
+	minplayers 0
 	#voteweight 0.5
 endmap
 
@@ -27,11 +30,11 @@ map pubbystation
 endmap
 
 map omegastation
-	maxplayers 35
+	maxplayers 0
 endmap
 
 map deltastation
-	minplayers 50
+	minplayers 0
 endmap
 
 map runtimestation

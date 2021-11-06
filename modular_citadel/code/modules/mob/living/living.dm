@@ -43,7 +43,7 @@
 
 /mob/living/Move(atom/newloc, direct)
 	. = ..()
-	if(.)
+	if(. && !HAS_TRAIT(src, IGNORE_PSEUDO_Z_AXIS))
 		pseudo_z_axis = newloc.get_fake_z()
 		pixel_z = pseudo_z_axis
 
@@ -68,7 +68,7 @@
 			resist_a_rest()
 
 /mob/living/proc/resist_a_rest(automatic = FALSE, ignoretimer = FALSE) //Lets mobs resist out of resting. Major QOL change with combat reworks.
-	if(!resting || stat || attemptingstandup)
+	if(!resting || stat || attemptingstandup || HAS_TRAIT(src, TRAIT_FLOORED))
 		return FALSE
 	if(ignoretimer)
 		resting = FALSE

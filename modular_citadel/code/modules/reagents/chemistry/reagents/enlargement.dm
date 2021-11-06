@@ -109,7 +109,7 @@
 		return ..()
 
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
-	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
+	//var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles") No more missing testicles
 	var/obj/item/organ/genital/vagina/V = M.getorganslot("vagina")
 	var/obj/item/organ/genital/womb/W = M.getorganslot("womb")
 
@@ -120,8 +120,8 @@
 	if(P)
 		P.cached_length = P.cached_length - 0.05
 		P.update()
-	if(T)
-		T.Remove(M)
+	/*if(T)
+		T.Remove(M)*/ //No more missing testicles
 	if(!V)
 		var/obj/item/organ/genital/vagina/nV = new
 		nV.Insert(M)
@@ -303,8 +303,8 @@
 
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
 	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-	var/obj/item/organ/genital/vagina/V = M.getorganslot("vagina")
-	var/obj/item/organ/genital/womb/W = M.getorganslot("womb")
+	//var/obj/item/organ/genital/vagina/V = M.getorganslot("vagina")
+	//var/obj/item/organ/genital/womb/W = M.getorganslot("womb")
 
 	if(M.gender == FEMALE)
 		M.gender = MALE
@@ -313,10 +313,10 @@
 	if(B)
 		B.cached_size = B.cached_size - 0.05
 		B.update()
-	if(V)
+	/*if(V)
 		V.Remove(M)
 	if(W)
-		W.Remove(M)
+		W.Remove(M)*/ //I just want my cock to get bigger bro
 	if(!T)
 		var/obj/item/organ/genital/testicles/nT = new
 		nT.Insert(M)

@@ -333,12 +333,12 @@
 
 /datum/species/proc/genitals_layertext(layer)
 	switch(layer)
-		if(GENITALS_BEHIND_LAYER)
-			return "BEHIND"
 		/*if(GENITALS_ADJ_LAYER)
 			return "ADJ"*/
 		if(GENITALS_FRONT_LAYER)
 			return "FRONT"
+		if(GENITALS_BEHIND_LAYER)
+			return "BEHIND"
 
 //procs to handle sprite overlays being applied to humans
 
@@ -419,6 +419,9 @@
 
 	for(var/L in relevant_layers) //Less hardcode
 		H.remove_overlay(L)
+
+	if(H.dna.features["taur"] == "None")
+		relevant_layers -= GENITALS_BEHIND_LAYER
 
 	//start scanning for genitals
 	for(var/obj/item/organ/O in H.internal_organs)

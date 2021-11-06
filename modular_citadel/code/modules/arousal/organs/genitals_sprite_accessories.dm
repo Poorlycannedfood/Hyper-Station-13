@@ -136,6 +136,10 @@
     icon_state = "gaping"
     name = "Gaping"
 
+/datum/sprite_accessory/vagina/cloaca
+	icon_state = "cloaca"
+	name = "Cloaca"
+
 //BELLY BE HERE
 /datum/sprite_accessory/belly
 	icon = 'hyperstation/icons/obj/genitals/belly.dmi'

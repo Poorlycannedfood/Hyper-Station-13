@@ -122,9 +122,9 @@
 			LateChoices()
 			return
 
-		if(client.prefs.real_name in client.pastcharacters) //if character has been spawned before
+		/*if(client.prefs.real_name in client.pastcharacters) //if character has been spawned before
 			to_chat(usr, "<span class='notice'>You have played that character before this round, please select a new one!</span>")
-			return
+			return*/
 
 		if(SSticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in GLOB.admin_datums)))
 			to_chat(usr, "<span class='danger'>[CONFIG_GET(string/hard_popcap_message)]</span>")
@@ -288,7 +288,7 @@
 
 	observer.started_as_observer = TRUE
 	src.client.respawn_observing = 1
-	src.client.lastrespawn = world.time + 1800 SECONDS //reset respawn.
+	src.client.lastrespawn = world.time + 1 SECONDS //reset respawn.
 	close_spawn_windows()
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 	to_chat(src, "<span class='notice'>Now teleporting.</span>")

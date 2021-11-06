@@ -493,7 +493,8 @@
 		/datum/reagent/consumable/limejuice,
 		/datum/reagent/consumable/tomatojuice,
 		/datum/reagent/consumable/lemonjuice,
-		/datum/reagent/consumable/menthol
+		/datum/reagent/consumable/menthol,
+		/datum/reagent/consumable/peachjuice //Comment this and uncomment line 514 if shit goes wrong
 	)
 	upgrade_reagents = list(
 		/datum/reagent/consumable/banana,
@@ -510,7 +511,7 @@
 		/datum/reagent/drug/mushroomhallucinogen,
 		/datum/reagent/consumable/nothing,
 		/datum/reagent/medicine/cryoxadone,
-		/datum/reagent/consumable/peachjuice,
+		///datum/reagent/consumable/peachjuice, Uncomment this line and comment line 497 if shit goes wrong
 		/datum/reagent/consumable/vanilla
 	)
 	emagged_reagents = list(
