@@ -499,9 +499,9 @@
 		return
 
 	if(M) //Checking if a machine did it instead.
-		src.visible_message("<span class='love'>The [M] pumps faster, trying to get [src] over the edge.</span>", \
-							"<span class='userlove'>You hear a strong suction sound coming from the [M].</span>", \
-							"<span class='userlove'>The [M] vacuums [src]'s [G.name] with a quiet but powerfull vrrrr.</span>")
+		src.visible_message("<span class='love'>You hear a strong suction sound coming from the [M.name] on [src]'s [G.name].</span>", \
+							"<span class='userlove'>The [M.name] pumps faster, trying to get you over the edge.</span>", \
+							"<span class='userlove'>Something vacuums your [G.name] with a quiet but powerfull vrrrr.</span>")
 	else
 		src.visible_message("<span class='love'>[src] starts to [G.masturbation_verb] their [G.name] over [container].</span>", \
 							"<span class='userlove'>You start to [G.masturbation_verb] your [G.name] over [container].</span>", \
@@ -509,13 +509,13 @@
 	if(do_after(src, mb_time, target = src) && in_range(src, container))
 		fluid_source.trans_to(container, total_fluids)
 		if(M)
-			src.visible_message("<span class='love'>The [M] sucks out all the [main_fluid] [src] had been saving up into [container]!</span>", \
-								"<span class='userlove'>[src]'s [G.name] juices fill up the [container] with a total of [total_fluids]u's of [main_fluid].</span>", \
-								"<span class='userlove'>[src] moans in relief as [p_their()] [main_fluid] trickles into [container].</span>")
+			src.visible_message("<span class='love'>[src] twitches as [p_their()] [main_fluid] trickles into [container].</span>", \
+								"<span class='userlove'>[M] sucks out all the [main_fluid] you had been saving up into [container].</span>", \
+								"<span class='userlove'>You feel a vacuum sucking on your [G.name] as you climax</span>")
 		else
-			src.visible_message("<span class='love'>[src] uses [p_their()] [G.name] to fill [container]!</span>", \
-								"<span class='userlove'>You used your [G.name] and fill [container] with a total of [total_fluids]u of [main_fluid].</span>", \
-								"<span class='userlove'>You have relieved some pressure.</span>")
+			src.visible_message("<span class='love'>[src] fills [container] with [p_their()] [G.name]!</span>", \
+								"<span class='userlove'>You empty your [G.name] into [container].</span>", \
+								"<span class='userlove'>You empty your [G.name] into something.</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 		container.add_cum_overlay() //your aim is bad...
 		if(G.can_climax)
