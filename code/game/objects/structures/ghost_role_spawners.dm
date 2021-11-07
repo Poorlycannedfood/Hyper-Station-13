@@ -44,7 +44,6 @@
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "large_egg"
 	mob_species = /datum/species/lizard/ashwalker
-	outfit = /datum/outfit/ashwalker
 	roundstart = FALSE
 	death = FALSE
 	anchored = FALSE
@@ -60,6 +59,7 @@
 	new_spawn.real_name = random_unique_lizard_name(gender)
 	to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
 
+	new_spawn.remove_all_languages()
 	new_spawn.grant_language(/datum/language/draconic)
 	var/datum/language_holder/holder = new_spawn.get_language_holder()
 	holder.selected_default_language = /datum/language/draconic
@@ -67,6 +67,8 @@
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
 		H.underwear = "Nude"
+		H.undershirt = "Nude"
+		H.socks = "Nude"
 		H.update_body()
 
 /obj/effect/mob_spawn/human/ash_walker/Initialize(mapload)

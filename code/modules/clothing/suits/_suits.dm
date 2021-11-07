@@ -53,21 +53,22 @@
 
 /obj/item/clothing/suit/worn_overlays(isinhands = FALSE)
 	. = list()
-	if(!isinhands)
-		if(damaged_clothes)
-			. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
-		if(blood_DNA)
-			if(tauric && taurmode >= SNEK_TAURIC)
-				. += mutable_appearance('modular_citadel/icons/mob/64x32_effects.dmi', "[blood_overlay_type]blood", color = blood_DNA_to_color())
-			else
-				. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood", color = blood_DNA_to_color())
-		var/mob/living/carbon/human/M = loc
-		if(ishuman(M) && M.w_uniform)
-			var/obj/item/clothing/under/U = M.w_uniform
-			if(istype(U) && U.attached_accessory)
-				var/obj/item/clothing/accessory/A = U.attached_accessory
-				if(A.above_suit)
-					. += U.accessory_overlay
+	if(isinhands)
+		return
+
+	if(damaged_clothes)
+		. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
+	if(blood_DNA)
+		if(tauric && taurmode >= SNEK_TAURIC)
+			. += mutable_appearance('modular_citadel/icons/mob/64x32_effects.dmi', "[blood_overlay_type]blood", color = blood_DNA_to_color())
+		else
+			. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood", color = blood_DNA_to_color())
+	var/mob/living/carbon/human/M = loc
+	if(!(ishuman(M) && istype(M.w_uniform, /obj/item/clothing/under)))
+		return
+	
+	var/obj/item/clothing/under/U = M.w_uniform
+	. += U.accessory_overlays
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaging = TRUE)
 	..()

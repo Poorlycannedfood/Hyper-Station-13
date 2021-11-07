@@ -37,8 +37,10 @@
 		var/accessory_msg
 		if(istype(w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/U = w_uniform
-			if(U.attached_accessory)
-				accessory_msg += " with [icon2html(U.attached_accessory, user)] \a [U.attached_accessory]"
+			if(U.attached_accessories.len)
+				accessory_msg += " with the following accessories:\n"
+				for(var/obj/item/clothing/accessory/A in U.attached_accessories)
+					accessory_msg += "[icon2html(A, user)] \a [A]\n"
 
 		. += "[t_He] [t_is] wearing [w_uniform.get_examine_string(user)][accessory_msg]."
 	//head
@@ -120,11 +122,11 @@
 	//Can be picked up?
 	if(can_be_held)
 		. += "[t_He] might be able to be picked up with <b>Alt+Click</b>!\n"
-
+	
 	//Heat Detection
 	if(breedable)
-		if(HAS_TRAIT(src, TRAIT_HEAT))
-			. += "<span class='love'>[t_He] [t_is] currently in heat.</span>"
+		if(HAS_TRAIT(src, TRAIT_HEAT) && HAS_TRAIT(user, TRAIT_HEAT_DETECT))
+			. += "<span class='love'>[t_He] [t_is] currently in [gender == MALE ? "rut" : "heat"].</span>"
 
 	//CIT CHANGES START HERE - adds genital details to examine text
 	if(LAZYLEN(internal_organs))

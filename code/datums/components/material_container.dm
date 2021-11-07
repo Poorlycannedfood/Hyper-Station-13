@@ -324,10 +324,36 @@
 
 /datum/material
 	var/name
+	var/desc = "its..stuff."
 	var/amount = 0
 	var/id = null
-	var/sheet_type = null
+	///Base color of the material, is used for greyscale. Item isn't changed in color if this is null.
+	var/color
+	///Base alpha of the material, is used for greyscale icons.
+	var/alpha
+	///Materials "Traits". its a map of key = category | Value = Bool. Used to define what it can be used for
+	var/list/categories = list()
+	///The type of sheet this material creates. This should be replaced as soon as possible by greyscale sheets
+	var/sheet_type
 	var/coin_type = null
+	///This is a modifier for force, and resembles the strength of the material
+	var/strength_modifier = 1
+	///This is a modifier for integrity, and resembles the strength of the material
+	var/integrity_modifier = 1
+	///This is the amount of value per 1 unit of the material
+	var/value_per_unit = 0
+	///Armor modifiers, multiplies an items normal armor vars by these amounts.
+	var/armor_modifiers = list("melee" = 1, "bullet" = 1, "laser" = 1, "energy" = 1, "bomb" = 1, "bio" = 1, "rad" = 1, "fire" = 1, "acid" = 1)
+	///How beautiful is this material per unit?
+	var/beauty_modifier = 0
+	///Can be used to override the sound items make, lets add some SLOSHing.
+	var/item_sound_override
+	///Can be used to override the stepsound a turf makes. MORE SLOOOSH
+	var/turf_sound_override
+	///what texture icon state to overlay
+	var/texture_layer_icon_state
+	///a cached filter for the texture icon
+	var/cached_texture_filter
 
 /datum/material/metal
 	name = "Metal"

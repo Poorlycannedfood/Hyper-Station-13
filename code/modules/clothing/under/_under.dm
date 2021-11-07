@@ -13,8 +13,8 @@
 	var/adjusted = NORMAL_STYLE
 	var/suit_style = NORMAL_SUIT_STYLE
 	var/alt_covers_chest = FALSE // for adjusted/rolled-down jumpsuits, FALSE = exposes chest and arms, TRUE = exposes arms only
-	var/obj/item/clothing/accessory/attached_accessory
-	var/mutable_appearance/accessory_overlay
+	var/list/attached_accessories = list()
+	var/list/accessory_overlays = list()
 	mutantrace_variation = MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
 
@@ -28,8 +28,8 @@
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
 		if(blood_DNA)
 			. += mutable_appearance('icons/effects/blood.dmi', "uniformblood", color = blood_DNA_to_color())
-		if(accessory_overlay)
-			. += accessory_overlay
+		for(var/mutable_appearance/MA in accessory_overlays)
+			. += MA
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
 	if((has_sensor == BROKEN_SENSORS) && istype(I, /obj/item/stack/cable_coil))
@@ -73,71 +73,80 @@
 			suit_style = NORMAL_SUIT_STYLE
 		H.update_inv_w_uniform()
 
-	if(attached_accessory && slot != SLOT_HANDS && ishuman(user))
+	if(attached_accessories.len && slot != SLOT_HANDS && ishuman(user))
 		var/mob/living/carbon/human/H = user
-		attached_accessory.on_uniform_equip(src, user)
-		if(attached_accessory.above_suit)
-			H.update_inv_wear_suit()
+		for(var/obj/item/clothing/accessory/A in attached_accessories)
+			A.on_uniform_equip(src, user)
+			if(A.above_suit)
+				H.update_inv_wear_suit()
 
 /obj/item/clothing/under/dropped(mob/user)
-	if(attached_accessory)
-		attached_accessory.on_uniform_dropped(src, user)
+	if(attached_accessories.len)
+		for(var/obj/item/clothing/accessory/A in attached_accessories)
+			A.on_uniform_dropped(src, user)
+		
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(attached_accessory.above_suit)
-				H.update_inv_wear_suit()
+			H.update_inv_wear_suit()
 
 	..()
 
 /obj/item/clothing/under/proc/attach_accessory(obj/item/I, mob/user, notifyAttach = 1)
 	. = FALSE
-	if(istype(I, /obj/item/clothing/accessory))
-		var/obj/item/clothing/accessory/A = I
-		if(attached_accessory)
-			if(user)
-				to_chat(user, "<span class='warning'>[src] already has an accessory.</span>")
-			return
-		else
-			if(user && !user.temporarilyRemoveItemFromInventory(I))
-				return
-			if(!A.attach(src, user))
-				return
+	if(!istype(I, /obj/item/clothing/accessory))
+		return
 
-			if(user && notifyAttach)
-				to_chat(user, "<span class='notice'>You attach [I] to [src].</span>")
+	var/obj/item/clothing/accessory/A = I
+	var/leng = attached_accessories.len
+	. = TRUE
+	if(leng >= 3)
+		if(user)
+			to_chat(user, "<span class='warning'>[src] can't fit another accessory.</span>")
+		return
+	if(user && !user.temporarilyRemoveItemFromInventory(I))
+		return
+	if(!A.attach(src, user))
+		return
 
-			var/accessory_color = attached_accessory.item_color
-			if(!accessory_color)
-				accessory_color = attached_accessory.icon_state
-			accessory_overlay = mutable_appearance('icons/mob/accessories.dmi', "[accessory_color]")
-			accessory_overlay.alpha = attached_accessory.alpha
-			accessory_overlay.color = attached_accessory.color
+	if(user && notifyAttach)
+		to_chat(user, "<span class='notice'>You attach [I] to [src].</span>")
 
-			if(ishuman(loc))
-				var/mob/living/carbon/human/H = loc
-				H.update_inv_w_uniform()
-				H.update_inv_wear_suit()
+	var/accessory_color = A.item_color
+	if(!accessory_color)
+		accessory_color = A.icon_state
+	var/mutable_appearance/overlay = mutable_appearance('icons/mob/accessories.dmi', "[accessory_color]")
+	overlay.alpha = A.alpha
+	overlay.color = A.color
+	accessory_overlays += overlay
+	attached_accessories += A
 
-			return TRUE
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_w_uniform()
+		H.update_inv_wear_suit()
+
+	return TRUE
 
 /obj/item/clothing/under/proc/remove_accessory(mob/user)
 	if(!isliving(user))
 		return
 	if(!can_use(user))
 		return
+	var/length = attached_accessories.len
+	if(!length)
+		return
 
-	if(attached_accessory)
-		var/obj/item/clothing/accessory/A = attached_accessory
-		attached_accessory.detach(src, user)
-		if(user.put_in_hands(A))
-			to_chat(user, "<span class='notice'>You detach [A] from [src].</span>")
-		else
-			to_chat(user, "<span class='notice'>You detach [A] from [src] and it falls on the floor.</span>")
+	var/obj/item/clothing/accessory/A = attached_accessories[length]
+	A.detach(src, user, length)
+	if(user.put_in_hands(A))
+		to_chat(user, "<span class='notice'>You detach [A] from [src].</span>")
+	else
+		to_chat(user, "<span class='notice'>You detach [A] from [src] and it falls on the floor.</span>")
 
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			H.update_inv_w_uniform()
-			H.update_inv_wear_suit()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_w_uniform()
+		H.update_inv_wear_suit()
 
 
 /obj/item/clothing/under/examine(mob/user)
@@ -159,5 +168,10 @@
 				. += "Its vital tracker appears to be enabled."
 			if(SENSOR_COORDS)
 				. += "Its vital tracker and tracking beacon appear to be enabled."
-	if(attached_accessory)
-		. += "\A [attached_accessory] is attached to it."
+	if(attached_accessories.len)
+		if(attached_accessories.len == 1)
+			. += "\A [attached_accessories[1]] [icon2html(attached_accessories[1], user)] is attached to it."
+		else
+			. += "It has several accessories attached to it:"
+			for(var/obj/item/clothing/accessory/A in attached_accessories)
+				. += "[icon2html(A, user)] \a [A]"

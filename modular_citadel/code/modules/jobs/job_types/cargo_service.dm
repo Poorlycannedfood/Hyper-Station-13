@@ -6,7 +6,7 @@
 	department_head = list("Captain")
 	supervisors = "the captain"
 	req_admin_notify = 1
-	minimal_player_age = 3
+	minimal_player_age = 20
 //	exp_requirements = 180
 //	exp_type_department = EXP_TYPE_SUPPLY
 

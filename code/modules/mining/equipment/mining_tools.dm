@@ -81,6 +81,7 @@
 	name = "diamond-tipped cyborg mining drill" //To inherit the NODROP_1 flag, and easier to change borg specific drill mechanics.
 	icon_state = "diamonddrill"
 	toolspeed = 0.1
+	digrange = 2
 
 /obj/item/pickaxe/drill/jackhammer
 	name = "sonic jackhammer"
@@ -91,6 +92,7 @@
 	usesound = 'sound/weapons/sonic_jackhammer.ogg'
 	hitsound = 'sound/weapons/sonic_jackhammer.ogg'
 	desc = "Cracks rocks with sonic blasts, and doubles as a demolition power tool for smashing walls."
+	digrange = 2
 
 /obj/item/shovel
 	name = "shovel"

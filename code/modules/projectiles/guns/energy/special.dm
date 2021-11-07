@@ -140,6 +140,9 @@
 		. += "<span class='notice'>[src] is [round(cell.percent())]% charged.</span>"
 
 /obj/item/gun/energy/plasmacutter/attackby(obj/item/I, mob/user)
+	if(cell.charge >= cell.maxcharge)
+		to_chat(user, "<span class='notice'>The [src] is already fully charged!</span>")
+		return
 	if(istype(I, /obj/item/stack/sheet/mineral/plasma))
 		I.use(1)
 		cell.give(1000)

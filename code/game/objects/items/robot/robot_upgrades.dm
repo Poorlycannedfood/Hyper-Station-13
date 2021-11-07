@@ -157,8 +157,8 @@
 	if(.)
 		for(var/obj/item/pickaxe/drill/cyborg/D in R.module)
 			R.module.remove_module(D, TRUE)
-		for(var/obj/item/shovel/S in R.module)
-			R.module.remove_module(S, TRUE)
+		//for(var/obj/item/shovel/S in R.module)
+		//	R.module.remove_module(S, TRUE)
 
 		var/obj/item/pickaxe/drill/cyborg/diamond/DD = new /obj/item/pickaxe/drill/cyborg/diamond(R.module)
 		R.module.basic_modules += DD

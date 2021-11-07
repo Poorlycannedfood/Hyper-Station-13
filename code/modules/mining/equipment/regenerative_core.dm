@@ -58,7 +58,7 @@
 	if(inert)
 		to_chat(owner, "<span class='notice'>[src] breaks down as it tries to activate.</span>")
 	else
-		owner.legion_heal()
+		owner.fully_heal()
 	qdel(src)
 
 /obj/item/organ/regenerative_core/on_life()
@@ -66,6 +66,10 @@
 	if(owner.health < owner.crit_threshold)
 		ui_action_click()
 
+/obj/item/organ/regenerative_core/attack_self(mob/user)
+	. = ..()
+	return afterattack(user, user, 1)
+	
 /obj/item/organ/regenerative_core/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(proximity_flag && ishuman(target))
@@ -83,7 +87,7 @@
 			else
 				to_chat(user, "<span class='notice'>You start to smear [src] on yourself. Disgusting tendrils hold you together and allow you to keep moving, but for how long?</span>")
 				SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "self"))
-			H.legion_heal()
+			H.fully_heal()
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "legion", /datum/mood_event/healsbadman)
 			qdel(src)
 

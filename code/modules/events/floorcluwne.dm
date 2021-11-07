@@ -1,4 +1,4 @@
-/datum/round_event_control/floor_cluwne
+/*/datum/round_event_control/floor_cluwne
 	name = "Floor Cluwne"
 	typepath = /datum/round_event/floor_cluwne
 	max_occurrences = 1
@@ -20,3 +20,5 @@
 	message_admins("A floor cluwne has been spawned at [COORD(T)][ADMIN_JMP(T)]")
 	log_game("A floor cluwne has been spawned at [COORD(T)]")
 	return SUCCESSFUL_SPAWN
+/
+*/
