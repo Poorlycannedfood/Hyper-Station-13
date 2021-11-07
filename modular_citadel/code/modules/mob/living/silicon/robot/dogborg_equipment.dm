@@ -17,14 +17,14 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 /obj/item/dogborg/jaws/big
 	name = "combat jaws"
 	desc = "The jaws of the law. Very sharp."
-	icon_state = "jaws"
+	icon_state = "jaws_2"
 	force = 10 //Lowered to match secborg. No reason it should be more than a secborg's baton.
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 
 /obj/item/dogborg/jaws/small
 	name = "puppy jaws"
 	desc = "Rubberized teeth designed to protect accidental harm. Sharp enough for specialized tasks however."
-	icon_state = "smalljaws"
+	icon_state = "jaws_2"
 	force = 6
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 	var/status = 0
@@ -379,3 +379,157 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			pixel_y = initial(pixel_y)
 			update_icons()
 			update_canmove()
+
+//pleasuremaw stuff
+/obj/item/milking_machine/pleasuremaw
+	name = "pleasuremaw"
+	desc = "A module that makes hound maws become slippery, warm, sticky, and soft, perfect place to slip your dick inside and relax, feed and help charge the borgs."
+	icon = 'icons/mob/dogborg.dmi'
+	icon_state = "pleasuremaw"
+	on = TRUE
+	var/toggle_process_regents = FALSE
+	var/consumption_rate = 2
+	var/mob/living/silicon/robot/borg_self = null
+
+/obj/item/milking_machine/pleasuremaw/Initialize()
+	. = ..()
+	inserted_item = new /obj/item/reagent_containers/glass/beaker/large(src)
+	inserted_item.name = "cyborg stomach"
+	inserted_item.desc = "A cyborg stomach. It seems integrated into [src]'s machinery."
+
+/obj/item/milking_machine/pleasuremaw/interact(mob/user)
+	//start processing the regents in the container - and slowly use em up to create power
+	toggle_process_regents = !toggle_process_regents
+	if (toggle_process_regents)
+		to_chat(user, "<span class='notice'>You start churning the sexual fluids from your [inserted_item.name] into energy.</span>")
+		borg_self = user
+		START_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
+		to_chat(user, "<span class='notice'>You stop processing the fluids from the [inserted_item.name].</span>")
+	return
+
+/obj/item/milking_machine/pleasuremaw/process()
+	//TODO: Check if any of the regents are not erotic fluids - if they are - stop the process and spit out a message to the user.
+	if (inserted_item.reagents.total_volume < consumption_rate)
+		src.interact(borg_self)
+		return
+	inserted_item.reagents.remove_all(consumption_rate)
+	borg_self.cell.charge = min(borg_self.cell.charge + borg_self.cell.maxcharge/50, borg_self.cell.maxcharge)
+
+/obj/item/milking_machine/pleasuremaw/AltClick(mob/living/user)
+	//function for when alt-clicked -  do nothing for now - do not call parent
+	return
+
+/obj/item/milking_machine/pleasuremaw/afterattack(mob/living/carbon/C, mob/living/user, proximity)
+	//use pleasuremaw on designated body part in different ways depending on the intent
+	var/mob/living/silicon/robot/R = user
+	if(!proximity || !check_allowed_items(C))
+		return
+	else if(istype(C, /obj/item/reagent_containers/))
+		R.visible_message("<span class='warning'>You open your mouth and dispense the contents of your [src.name]'s storage into [C]</span>", \
+						"<span class='notice'>[R] opens [p_their()] [src.name] and dispenses something sticky into [C]</span>")
+		//TODO: check if internal beaker is too full - and if yes - spill rest onto floor
+		inserted_item.reagents.trans_to(C, inserted_item.reagents.total_volume)
+	else if(ishuman(C))
+		var/mob/living/carbon/human/H = C
+		//TODO: arms and legs?
+		if(check_zone(R.zone_selected) == BODY_ZONE_HEAD)
+			//mouth
+			//TODO: on harm intent feed contents of cyborg stomach to person instead 
+			//		make a check for if the mouth is covered
+			if (R.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+				R.visible_message("<span class='warning'>[R] kisses [H]!</span>", \
+								"<span class='notice'>You kiss [H]!</span>")
+				playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+				H.adjustArousalLoss(10)
+			//ears
+			else if (R.zone_selected == BODY_ZONE_HEAD)
+				//make check for ear visibility? nah.
+				R.visible_message("<span class='warning'>[R] licks [H]'s ears!</span>", \
+								"<span class='notice'>You lick [H]'s ears!</span>")
+				playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+				H.adjustArousalLoss(5)
+		else if(check_zone(R.zone_selected) == BODY_ZONE_CHEST)
+			//breasts
+			if (R.zone_selected == BODY_ZONE_CHEST)
+				var/obj/item/organ/genital/breasts/G = H.getorganslot("breasts")
+				target_organ = G.name
+				if (G && G.is_exposed())
+					R.visible_message("<span class='warning'>[R] sucks on [H]'s [G.name]!</span>", \
+									"<span class='notice'>You suck on [H]'s [G.name]!</span>")
+					playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+					H.adjustArousalLoss(10)
+					..()
+				else
+					to_chat(R, "<span class='info'>Lickable breasts not found!</span>")
+			//penis,testies,vag,ass
+			//TODO: add only the parts that the target actually has to the radial menu
+			//		add color to images and make them correspond with the type that the target user has
+			//		make it so that if a covered up part is chosen - it licks the outside (the clothes). (apply this to the mouth interaction)
+			else if (R.zone_selected == BODY_ZONE_PRECISE_GROIN)
+				var/static/list/possible_choices = sortList(list(
+					"Penis" = image(icon = 'modular_citadel/icons/obj/genitals/penis.dmi', icon_state = "penis"),
+					"Testicles" = image(icon= 'modular_citadel/icons/obj/genitals/testicles.dmi', icon_state = "testicles"),
+					"Vagina" = image(icon= 'modular_citadel/icons/obj/genitals/vagina.dmi', icon_state = "vagina"),
+					"Butt" = image(icon= 'modular_citadel/icons/obj/genitals/breasts.dmi', icon_state = "butt")
+				))
+				var/choice = show_radial_menu(R, src, possible_choices)
+				if(!choice)
+					return
+				switch(choice)
+					if("Penis")
+						var/obj/item/organ/genital/penis/G = H.getorganslot("penis")
+						target_organ = G.name
+						if (G && G.is_exposed())
+							R.visible_message("<span class='warning'>[R] blows [H]'s [G.name]!</span>", \
+											"<span class='notice'>You blow [H]'s [G.name]!</span>")
+							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+							H.adjustArousalLoss(10)
+							..()
+						else
+							to_chat(R, "<span class='info'>Lickable penis not found!</span>")
+					if("Testicles")
+						var/obj/item/organ/genital/testicles/G = H.getorganslot("testicles")
+						target_organ = G.name
+						if (G && G.is_exposed())
+							R.visible_message("<span class='warning'>[R] laps [H]'s [G.name]!</span>", \
+											"<span class='notice'>You lap [H]'s [G.name]!</span>")
+							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+							H.adjustArousalLoss(10)
+							..()
+						else
+							to_chat(R, "<span class='info'>Lickable testicles not found!</span>")
+					if("Vagina")
+						var/obj/item/organ/genital/vagina/G = H.getorganslot("vagina")
+						target_organ = G.name
+						if (G && G.is_exposed())
+							R.visible_message("<span class='warning'>[R] tongue fucks [H]'s [G.name]!</span>", \
+											"<span class='notice'>You tongue fuck [H]'s [G.name]!</span>")
+							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+							H.adjustArousalLoss(10)
+							..()
+						else
+							to_chat(R, "<span class='info'>Lickable pussy not found!</span>")
+					if("Butt")
+						var/obj/item/organ/genital/anus/G = H.getorganslot("anus")
+						target_organ = G.name
+						if (G && G.is_exposed())
+							// using ass instead of G.name because saying anus is not as sexy
+							R.visible_message("<span class='warning'>[R]'s giving [H] a rimjob!</span>", \
+											"<span class='notice'>You rim [H]'s ass!</span>")
+							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+							H.adjustArousalLoss(15)
+						else
+							to_chat(R, "<span class='info'>Lickable ass not found!</span>")
+		//TODO:	make check for if is in harm intent - if yes (spit regents from cyborg stomach) at target
+		//		if is nearby
+		// 			if target has a mouth and target_bodypart is mouth
+		// 				feed all of the regents to target
+		//			else
+		// 				splash target with regents
+		//		else spit regents in direction of where it was clicked and get what was hit (target)
+		// 			if target has a mouth and target_bodypart is mouth
+		// 				feed 10u of the regents to target
+		// 			splash target with remaining regents
+	return

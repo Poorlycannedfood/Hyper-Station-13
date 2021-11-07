@@ -8,11 +8,16 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKET
 
 	var/on = FALSE
-	var/obj/item/reagent_containers/glass/inserted_item = null
+	var/obj/item/reagent_containers/inserted_item = null
 
+	var/milking_speed = 50
 	var/engine_sound = 'sound/vehicles/carrev.ogg'
 	var/target_organ  = "breasts" // What organ we are transfering from
 	var/inuse = 0
+
+/obj/item/milking_machine/Initialize()
+	. = ..()
+	item_flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/milking_machine/examine(mob/user)
 	. = ..()
@@ -59,53 +64,54 @@
 	icon_state = "PenisOff"
 	item_state = "PenisOff"
 	desc = "A pocket sized pump and tubing assembly designed to collect and store products from the penis."
-
 	target_organ  = "penis"
 
 /obj/item/milking_machine/penis/UpdateIcon()
 	icon_state = "Penis[on ? "On" : "Off"][inserted_item ? "Beaker" : ""]"
 	item_state = icon_state
 
-/obj/item/milking_machine/attack(mob/living/carbon/human/C, mob/living/user)
+/obj/item/milking_machine/afterattack(mob/living/carbon/human/H, mob/living/user)
 	if (!on)
 		to_chat(user, "<span class='notice'>You can't use the [src] while it's off.</span>")
 		return
 
-	var/obj/item/organ/genital/O = FALSE
-
+	var/obj/item/organ/genital/G = FALSE
 	// Checking if a valid organ is being passed
 	if(target_organ == "penis")
-		O = C.getorganslot("penis")
+		G = H.getorganslot("penis")
 	else if(target_organ == "breasts")
-		O = C.getorganslot("breasts")
+		G = H.getorganslot("breasts")
+	else if(target_organ == "vagina")
+		G = H.getorganslot("vagina")
 	else
-		to_chat(user, "<span class='notice'>You can't use the [src] on [C]'s [O.name].</span>")
 		return
 
 	if(inuse == 1) //just to stop stacking and causing people to cum instantly
 		return
-	if(O&&O.is_exposed())
+	if(G&&G.is_exposed())
 		inuse = 1
-		if(!(C == user)) //lewd flavour text
-			C.visible_message("<span class='userlove'>[user] vacuums [C]'s [O.name] with a [src].</span>", \
-							  "<span class='userlove'>[user] pumps [C]'s [O.name] using their [src].</span>")
+		if(!(H == user)) //lewd flavour text
+			H.visible_message("<span class='love'>[user] pumps [H]'s [G.name] using [p_their()] [src.name].</span>", \
+							  "<span class='userlove'>[user] pumps your [G.name] with [p_their()] [src.name].</span>", \
+							  "<span class='userlove'>Someone is pumping your [G.name].</span>")
 		else
-			user.visible_message("<span class='userlove'>You set the [src] to suck on your [O.name].</span>", \
-								 "<span class='userlove'>You pump your [O.name] with the [src].</span>")
+			user.visible_message("<span class='love'>[user] sets [src] to suck on [p_their()] [G.name].</span>", \
+								 "<span class='userlove'>You pump your [G.name] using [src].</span>", \
+								 "<span class='userlove'>You pump your [G.name] into the machine.</span>")
 		playsound(src, engine_sound, 30, 1, -1)
-		if(!do_mob(user, C, 3 SECONDS)) //3 second delay
+		if(!do_mob(user, H, 3 SECONDS)) //3 second delay
 			inuse = 0
 			return
 		playsound(src, 'sound/lewd/slaps.ogg', 20, 1, -1)
 		inuse = 0
 
 		if(prob(30)) //30% chance to make them moan.
-			C.emote("moan")
+			H.emote("moan")
 
-		C.do_jitter_animation()
-		C.adjustArousalLoss(20) //make the target more aroused. (same ammount as the fleshlight)
-		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
-			C.mob_fill_container(O, inserted_item, src) //make them cum if they are over the edge.
+		H.adjustArousalLoss(20) //make the target more aroused. (same ammount as the fleshlight)
+		if (H.getArousalLoss() >= 100 && ishuman(H) && H.has_dna())
+			H.mob_fill_container(G, inserted_item, src, milking_speed) //make them cum if they are over the edge.
+			H.do_jitter_animation()
 		return
 	else
 		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
