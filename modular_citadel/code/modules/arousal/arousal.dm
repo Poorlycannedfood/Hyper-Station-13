@@ -416,8 +416,9 @@
 					var/obj/item/organ/genital/belly/B = L.getorganslot("belly")
 					if(B)
 						if(B.inflatable && total_fluids > 80) //requires a big cumshot to expand.
-							if(B.size < 3)
+							if(B.size < 6)
 								B.size += 1
+								B.w_class += 1
 								to_chat(L, "<span class='userlove'>You feel your belly expand.</span>")
 							else
 								to_chat(L, "<span class='userlove'>You feel your belly strain.</span>")
