@@ -1,4 +1,4 @@
-## SEXO:EROS
+## EROS
 
 Based and maintained from Citadel Station.
 
