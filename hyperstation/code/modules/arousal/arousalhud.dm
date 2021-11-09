@@ -204,6 +204,7 @@
 		if(E.size > 0)
 			to_chat(usr, "<span class='userlove'>You feel your belly diminish.</span>")
 			E.size -= 1
+			E.w_class -= 1
 			H.update_genitals()
 		else
 			to_chat(usr, "<span class='warning'>Your belly is already at the minimum size! </span>")
