@@ -15405,7 +15405,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/hitman{
 	contents = newlist(/obj/item/clothing/suit/armor/vest,/obj/item/gun/ballistic/automatic/pistol,/obj/item/suppressor,/obj/item/melee/classic_baton/telescopic,/obj/item/clothing/mask/balaclava,/obj/item/bodybag,/obj/item/soap/nanotrasen)
 	},
-/obj/item/card/id/silver/reaper,
 /obj/item/lazarus_injector,
 /obj/item/gun/energy/e_gun/advtaser,
 /obj/item/clothing/neck/stethoscope,
@@ -64868,7 +64867,8 @@
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "ctU" = (
-/obj/structure/table/optable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "ctV" = (
@@ -65638,17 +65638,17 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/surgery)
-"cvn" = (
-/obj/machinery/computer/operating{
-	dir = 1
+/obj/structure/window/reinforced/tinted{
+	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "cvo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
@@ -66140,16 +66140,22 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "cwl" = (
-/obj/structure/closet/secure_closet/medical2,
 /obj/structure/sign/warning/nosmoking{
 	pixel_x = -28
 	},
+/obj/structure/table/optable,
 /turf/open/floor/plasteel,
 /area/medical/surgery)
 "cwm" = (
 /obj/machinery/airalarm{
 	dir = 1;
 	pixel_y = -22
+	},
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 4
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 1
@@ -66162,12 +66168,19 @@
 	dir = 1;
 	network = list("ss13","medbay")
 	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "cwo" = (
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
+	},
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 1
@@ -66181,7 +66194,7 @@
 	name = "Station Intercom (Medbay)";
 	pixel_y = -30
 	},
-/obj/structure/closet/crate/freezer/blood,
+/obj/structure/table/optable,
 /turf/open/floor/plasteel,
 /area/medical/surgery)
 "cwq" = (
@@ -101574,8 +101587,8 @@ coP
 cqf
 crk
 csx
-ctU
-cvn
+ctT
+ctT
 cwn
 clP
 cig
@@ -101831,7 +101844,7 @@ coQ
 cqh
 crl
 csy
-csy
+ctU
 cvo
 cwo
 clP

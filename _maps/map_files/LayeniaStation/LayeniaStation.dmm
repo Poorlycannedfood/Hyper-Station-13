@@ -14212,10 +14212,9 @@
 	},
 /area/science/misc_lab)
 "crq" = (
-/obj/structure/table,
-/obj/item/surgical_drapes,
-/obj/item/clothing/suit/apron/surgical{
-	pixel_y = 11
+/obj/machinery/computer/operating,
+/obj/structure/window/reinforced/tinted{
+	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/sleeper)
@@ -28388,6 +28387,8 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	name = "air scrubber"
 	},
+/obj/structure/table,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel/freezer,
 /area/medical/sleeper)
 "ggr" = (
@@ -35801,10 +35802,12 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
 "hXM" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/table,
+/obj/item/clothing/suit/apron/surgical{
+	pixel_y = 11
+	},
+/obj/item/surgical_drapes,
 /turf/open/floor/plasteel/freezer,
 /area/medical/sleeper)
 "hXO" = (
@@ -37145,7 +37148,10 @@
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "iqu" = (
-/obj/structure/table,
+/obj/machinery/computer/operating,
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/sleeper)
 "iqD" = (
@@ -38703,21 +38709,6 @@
 /obj/machinery/gibber,
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/kitchen)
-"iIF" = (
-/obj/structure/table,
-/obj/item/storage/box/masks{
-	pixel_y = 12
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 19
-	},
-/turf/open/floor/plasteel/freezer,
-/area/medical/sleeper)
 "iIZ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -53425,10 +53416,6 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/crew_quarters/dorms)
-"mSr" = (
-/obj/structure/table/optable,
-/turf/open/floor/plasteel/freezer,
-/area/medical/sleeper)
 "mSv" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -75803,6 +75790,14 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	name = "air vent"
 	},
+/obj/structure/table,
+/obj/item/storage/box/gloves{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/storage/box/masks{
+	pixel_y = 12
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/sleeper)
 "snL" = (
@@ -95489,12 +95484,11 @@
 /turf/open/floor/carpet/black,
 /area/crew_quarters/bar)
 "xpo" = (
-/obj/structure/table,
-/obj/item/storage/backpack/duffelbag/med/surgery,
 /obj/machinery/light{
 	dir = 1;
 	pixel_y = 19
 	},
+/obj/structure/table/optable,
 /turf/open/floor/plasteel/freezer,
 /area/medical/sleeper)
 "xpq" = (
@@ -131563,7 +131557,7 @@ wkW
 wkW
 vEd
 xpo
-iqu
+kAp
 dof
 ivq
 rhz
@@ -131819,7 +131813,7 @@ fwc
 mwC
 wHM
 lNl
-kAp
+crq
 kAp
 ggj
 iSr
@@ -132077,7 +132071,7 @@ oVC
 usC
 lNl
 kAp
-mSr
+kAp
 hXM
 jrL
 ivq
@@ -132333,7 +132327,7 @@ vEd
 vHe
 usC
 lNl
-kAp
+iqu
 kAp
 snK
 gTd
@@ -132590,8 +132584,8 @@ ttz
 xQd
 usC
 vEd
-iIF
-crq
+xpo
+kAp
 wZM
 tls
 scd

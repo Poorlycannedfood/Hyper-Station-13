@@ -42791,8 +42791,7 @@
 /area/hallway/primary/central)
 "bOk" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/table,
-/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/structure/table/optable,
 /turf/open/floor/plasteel,
 /area/medical/sleeper)
 "bOl" = (
@@ -42801,10 +42800,16 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/machinery/computer/operating,
+/obj/structure/window/reinforced/tinted{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white/side,
 /area/medical/sleeper)
 "bOm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/table,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bOn" = (
@@ -42812,19 +42817,14 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/machinery/computer/operating,
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white/side,
 /area/medical/sleeper)
 "bOo" = (
-/obj/structure/table,
-/obj/item/storage/box/masks{
-	pixel_y = 12
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 5;
-	pixel_y = 11
-	},
-/obj/item/clothing/suit/apron/surgical,
-/obj/item/clothing/suit/apron/surgical,
+/obj/structure/table/optable,
 /turf/open/floor/plasteel,
 /area/medical/sleeper)
 "bOp" = (
@@ -43381,7 +43381,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bPC" = (
@@ -44170,7 +44169,6 @@
 /area/medical/sleeper)
 "bRi" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/obj/structure/table/optable,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bRj" = (
@@ -45444,6 +45442,16 @@
 	pixel_x = 22
 	},
 /obj/machinery/light,
+/obj/structure/table,
+/obj/item/clothing/suit/apron/surgical,
+/obj/item/storage/box/gloves{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/storage/box/masks{
+	pixel_y = 12
+	},
+/obj/item/clothing/suit/apron/surgical,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bUj" = (
