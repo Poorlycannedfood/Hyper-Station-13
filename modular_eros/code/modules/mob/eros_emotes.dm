@@ -72,4 +72,8 @@
 			'modular_eros/sound/voice/farts/fart5.ogg',\
 			'modular_eros/sound/voice/farts/fart6.ogg'\
 		), 50, 1)
+		var/turf/T = get_turf(src)
+		for(var/obj/item/storage/book/bible/BIBBLE in T.contents)
+			gib()
+			break
 	
