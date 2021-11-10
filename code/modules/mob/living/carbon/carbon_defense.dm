@@ -347,8 +347,8 @@
 			var/mob/living/carbon/human/H = src
 			var/datum/species/pref_species = H.dna.species
 
-			M.visible_message("<span class='notice'>[M] gives [H] a boop on the [H.dna.features["snout"] != "None" ? "snout" : "nose"].", \
-						"<span class='notice'>You give [H] a boop on the [H.dna.features["snout"] != "None" ? "snout" : "nose"]!</span>")
+			M.visible_message("<span class='notice'>[M] gives [H] a boop on the [(islizard(H) && H.dna.features["snout"] != "None") ? "snout" : "nose"].", \
+						"<span class='notice'>You give [H] a boop on the [(islizard(H) && H.dna.features["snout"] != "None") ? "snout" : "nose"]!</span>")
 
 			if(H.dna.species.can_wag_tail(H))
 				if("tail_human" in pref_species.default_features)
