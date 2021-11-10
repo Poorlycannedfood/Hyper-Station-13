@@ -38,6 +38,7 @@
 		AddComponent(/datum/component/mood)
 	AddElement(/datum/element/mob_holder/micro, "micro")
 	AddElement(/datum/element/flavor_text/carbon, "", "Flavor Text", "", MAX_FLAVOR_LEN, FALSE, TRUE, "flavor_text")
+	AddElement(/datum/element/flavor_text/carbon, "", "Naked Flavor Text", "", MAX_FLAVOR_LEN, FALSE, TRUE, "naked_flavor_text", FALSE, TRUE)
 	AddElement(/datum/element/flavor_text, "", "Temporary Flavor Text", "This should be used only for things pertaining to the current round!")
 
 /mob/living/carbon/human/Destroy()

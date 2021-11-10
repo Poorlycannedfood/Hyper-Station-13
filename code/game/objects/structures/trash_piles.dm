@@ -104,6 +104,9 @@
 	var/adjusted_dive_time = hide_person_time
 	if(user.restrained()) //hiding takes twice as long when restrained.
 		adjusted_dive_time *= 2
+	
+	if(HAS_TRAIT(user, TRAIT_SKITTISH))
+		adjusted_dive_time *= 0.25
 
 	if(do_mob(user, user, adjusted_dive_time))
 		if(src.loc) //Checking if structure has been destroyed

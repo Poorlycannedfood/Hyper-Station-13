@@ -727,6 +727,7 @@
 	item_state = "duraskirt"
 	item_color = "duraskirt"
 	can_adjust = FALSE
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/under/gear_harness
 	name = "gear harness"

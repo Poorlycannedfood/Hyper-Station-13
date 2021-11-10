@@ -282,7 +282,7 @@
 			M.visible_message("<span class='notice'>[M] shakes [src] trying to get [p_them()] up!</span>", \
 							"<span class='notice'>You shake [src] trying to get [p_them()] up!</span>")
 
-		else if(check_zone(M.zone_selected) == "head")
+		else if(M.zone_selected == "head")
 			var/mob/living/carbon/human/H = src
 			var/datum/species/pref_species = H.dna.species
 			
@@ -343,12 +343,12 @@
 				return
 
 
-		else if(check_zone(M.zone_selected) == "mouth")
+		else if(M.zone_selected == "mouth")
 			var/mob/living/carbon/human/H = src
 			var/datum/species/pref_species = H.dna.species
 
-			M.visible_message("<span class='notice'>[M] gives [H] a boop on the nose.", \
-						"<span class='notice'>You give [H] a boop on the nose!</span>")
+			M.visible_message("<span class='notice'>[M] gives [H] a boop on the [(islizard(H) && H.dna.features["snout"] != "None") ? "snout" : "nose"].", \
+						"<span class='notice'>You give [H] a boop on the [(islizard(H) && H.dna.features["snout"] != "None") ? "snout" : "nose"]!</span>")
 
 			if(H.dna.species.can_wag_tail(H))
 				if("tail_human" in pref_species.default_features)

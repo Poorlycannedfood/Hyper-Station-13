@@ -3444,6 +3444,8 @@
 #include "modular_eros\code\modules\jobs\job_types\civilian.dm"
 #include "modular_eros\code\modules\mining\machine_bluespaceminer.dm"
 #include "modular_eros\code\modules\mining\tools\equipment\mining_tools.dm"
+#include "modular_eros\code\modules\mob\eros_emotes.dm"
+#include "modular_eros\code\modules\mob\mob.dm"
 #include "modular_eros\code\modules\mob\living\carbon\human\species_types\lizardpeople.dm"
 #include "modular_eros\code\modules\reagents\chemistry\reagents\alcohol_reagents.dm"
 #include "modular_eros\code\modules\research\designs\machine_designs.dm"

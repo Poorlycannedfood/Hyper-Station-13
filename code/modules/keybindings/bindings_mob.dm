@@ -75,12 +75,16 @@
 			if(WEST)
 				if(client.keys_held["Shift"])
 					westshift()
+				else if(client.keys_held["Alt"])
+					westtilt()
 				else
 					westface()
 				return
 			if(EAST)
 				if(client.keys_held["Shift"])
 					eastshift()
+				else if(client.keys_held["Alt"])
+					easttilt()
 				else
 					eastface()
 				return
