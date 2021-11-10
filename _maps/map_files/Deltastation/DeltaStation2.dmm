@@ -105261,9 +105261,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "dvF" = (
-/obj/machinery/computer/operating{
-	dir = 4
-	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
@@ -105280,11 +105277,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/table/optable,
 /turf/open/floor/plasteel,
 /area/medical/surgery)
 "dvG" = (
-/obj/structure/table/optable,
-/obj/effect/decal/cleanable/blood/old,
 /obj/structure/cable/white{
 	icon_state = "2-8"
 	},
@@ -105315,6 +105311,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/table/optable,
+/obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plasteel,
 /area/medical/surgery)
 "dvI" = (
@@ -106288,6 +106286,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/computer/operating{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "dxn" = (
@@ -106302,6 +106303,9 @@
 /area/medical/surgery)
 "dxo" = (
 /obj/effect/turf_decal/tile/blue,
+/obj/machinery/computer/operating{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "dxp" = (

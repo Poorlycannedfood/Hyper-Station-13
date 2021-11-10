@@ -42432,7 +42432,6 @@
 /turf/closed/wall,
 /area/medical/surgery)
 "bIo" = (
-/obj/structure/closet/crate/freezer/blood,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -42446,6 +42445,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bIp" = (
@@ -42461,6 +42461,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/structure/table/optable,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bIq" = (
@@ -42484,6 +42485,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bIr" = (
@@ -42501,10 +42503,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/structure/table/optable,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bIs" = (
-/obj/structure/closet/secure_closet/medical2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
@@ -42518,6 +42520,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bIt" = (
@@ -42985,10 +42988,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/surgery)
-"bJw" = (
-/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bJx" = (
@@ -43476,7 +43475,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bKF" = (
-/obj/structure/table/optable,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bKG" = (
@@ -43493,6 +43491,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "bKH" = (
@@ -96205,7 +96204,7 @@ bEI
 bFV
 bFU
 bIq
-bJw
+bKF
 bKF
 bLO
 bMP
