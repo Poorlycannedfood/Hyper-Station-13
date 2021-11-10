@@ -7,6 +7,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	var/list/texts_by_atom = list()
 	var/addendum = ""
 	var/always_show = FALSE
+	var/show_on_naked = FALSE
 	var/max_len = MAX_FLAVOR_LEN
 	var/can_edit = TRUE
 	/// For preference/DNA saving/loading. Null to prevent. Prefs are only loaded from obviously if it exists in preferences.features.
@@ -15,7 +16,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	var/examine_no_preview = FALSE
 	var/examineTabOutput = ""
 
-/datum/element/flavor_text/Attach(datum/target, text = "", _name = "Flavor Text", _addendum, _max_len = MAX_FLAVOR_LEN, _always_show = FALSE, _edit = TRUE, _save_key, _examine_no_preview = FALSE)
+/datum/element/flavor_text/Attach(datum/target, text = "", _name = "Flavor Text", _addendum, _max_len = MAX_FLAVOR_LEN, _always_show = FALSE, _edit = TRUE, _save_key, _examine_no_preview = FALSE, _show_on_naked = FALSE)
 	. = ..()
 
 	if(. == ELEMENT_INCOMPATIBLE || !isatom(target)) //no reason why this shouldn't work on atoms too.
@@ -28,6 +29,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		flavor_name = _name
 	if(!isnull(addendum))
 		addendum = _addendum
+	show_on_naked = _show_on_naked
 	always_show = _always_show
 	can_edit = _edit
 	save_key = _save_key
@@ -61,6 +63,9 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		if(!unknown && iscarbon(target))
 			var/mob/living/carbon/C = L
 			unknown = (C.wear_mask && (C.wear_mask.flags_inv & HIDEFACE)) || (C.head && (C.head.flags_inv & HIDEFACE))
+			if(show_on_naked && ishuman(C))
+				var/mob/living/carbon/human/H = C
+				unknown = (unknown || (H.w_uniform || H.wear_suit))
 		if(unknown)
 			if(!("...?" in examine_list)) //can't think of anything better in case of multiple flavor texts.
 				examine_list += "...?"

@@ -191,6 +191,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"ipc_screen" = "Sunburst",
 		"ipc_antenna" = "None",
 		"flavor_text" = "",
+		"naked_flavor_text" = "",
 		"silicon_flavor_text" = "",
 		"ooc_text" = ""
 		)
@@ -409,6 +410,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[features["flavor_text"]]"
 			else
 				dat += "[TextPreview(features["flavor_text"])]...<BR>"
+
+			dat += "<h2>Naked Flavor Text</h2>"
+			dat += "<a href='?_src_=prefs;preference=naked_flavor_text;task=input'><b>Set Naked Examine Text</b></a><br>"
+			if(length(features["naked_flavor_text"]) <= 40)
+				if(!length(features["naked_flavor_text"]))
+					dat += "\[...\]"
+				else
+					dat += "[features["naked_flavor_text"]]"
+
 			dat += "<h2>Silicon Flavor Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
 			if(length(features["silicon_flavor_text"]) <= 40)
@@ -1782,7 +1792,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(msg)
 						msg = msg
 						features["flavor_text"] = msg
-
+				if("naked_flavor_text")
+					var/msg = stripped_multiline_input(usr, "Set the naked flavor text in your 'examine' verb. This should be IC, describing how your character would look like if naked.", "Naked Flavor Text", html_decode(features["naked_flavor_text"]), MAX_MESSAGE_LEN, TRUE)
+					if(msg)
+						msg = msg
+						features["naked_flavor_text"] = msg
 				if("silicon_flavor_text")
 					var/msg = stripped_multiline_input(usr, "Set the silicon flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Silicon Flavor Text", features["silicon_flavor_text"], MAX_FLAVOR_LEN, TRUE)
 					if(msg)
