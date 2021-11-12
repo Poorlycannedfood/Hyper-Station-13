@@ -3453,6 +3453,7 @@
 #include "modular_eros\code\modules\ruins\objects_and_mobs\ash_walker_den.dm"
 #include "modular_eros\code\modules\sprites\wendigo_horns.dm"
 #include "modular_eros\code\modules\tgs\chat_commands.dm"
+#include "modular_eros\icons\_icon_override.dm"
 #include "modular_sand\code\__HELPERS\chat.dm"
 #include "modular_sand\code\controllers\configuration\entries\sandstorm.dm"
 #include "modular_sand\code\modules\tgs\chat_commands.dm"
