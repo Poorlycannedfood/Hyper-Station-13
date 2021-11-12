@@ -107,7 +107,7 @@
 	icon_state = "fuel_high"
 	tank_volume = 3000
 
-/obj/structure/reagent_dispensers/fueltank/boom()
+/obj/structure/reagent_dispensers/fueltank/proc/explode()
 	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
 	qdel(src)
 
@@ -115,10 +115,10 @@
 	boom()
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom()
+	explode()
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom()
+	explode()
 
 /obj/structure/reagent_dispensers/fueltank/tesla_act()
 	..() //extend the zap
@@ -132,7 +132,7 @@
 			GLOB.bombers += boom_message
 			message_admins(boom_message)
 			P.firer?.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
-			boom()
+			explode()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/weldingtool))
@@ -161,7 +161,7 @@
 			message_admins(message_admins)
 
 			user.log_message("triggered a fueltank explosion via welding tool.", LOG_ATTACK)
-			boom()
+			explode()
 		return
 	return ..()
 
