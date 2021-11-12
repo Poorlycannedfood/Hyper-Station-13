@@ -107,7 +107,7 @@
 	icon_state = "fuel_high"
 	tank_volume = 3000
 
-/obj/structure/reagent_dispensers/fueltank/boom()
+/obj/structure/reagent_dispensers/fueltank/proc/explode()
 	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
 	qdel(src)
 
@@ -115,10 +115,10 @@
 	boom()
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom()
+	explode()
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom()
+	explode()
 
 /obj/structure/reagent_dispensers/fueltank/tesla_act()
 	..() //extend the zap
@@ -127,12 +127,12 @@
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/P)
 	..()
 	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
-		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
+		if(!P.nodamage && (P.damage_type == BURN))
 			var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
 			GLOB.bombers += boom_message
 			message_admins(boom_message)
 			P.firer?.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
-			boom()
+			explode()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/weldingtool))
@@ -150,14 +150,18 @@
 			W.update_icon()
 		else
 			var/turf/T = get_turf(src)
-			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
+			if(!HAS_TRAIT(user, TRAIT_DUMB))
+				to_chat(user, "<span class='warning'>That would be extremely stupid.</span>")
+				message_admins("[ADMIN_LOOKUPFLW(user)] tried to trigger a fueltank explosion via welding tool at [ADMIN_VERBOSEJMP(T)].")
+				return
 
+			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
 			var/message_admins = "[ADMIN_LOOKUPFLW(user)] triggered a fueltank explosion via welding tool at [ADMIN_VERBOSEJMP(T)]."
 			GLOB.bombers += message_admins
 			message_admins(message_admins)
 
 			user.log_message("triggered a fueltank explosion via welding tool.", LOG_ATTACK)
-			boom()
+			explode()
 		return
 	return ..()
 
