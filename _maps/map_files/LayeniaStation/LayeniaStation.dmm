@@ -1877,10 +1877,8 @@
 /turf/open/floor/plating/layenia,
 /area/layenia)
 "acM" = (
-/obj/machinery/light{
-	pixel_y = -1
-	},
-/turf/closed/mineral/layenia,
+/obj/structure/falsewall,
+/turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
 "acN" = (
 /obj/effect/turf_decal/stripes/line,
@@ -12192,7 +12190,16 @@
 /turf/open/floor/plating,
 /area/engine/break_room)
 "bNg" = (
-/obj/item/twohanded/required/kirbyplants/random,
+/obj/effect/turf_decal/loading_area{
+	dir = 9;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
 "bNj" = (
@@ -12218,6 +12225,11 @@
 	},
 /area/hallway/primary/port/fore)
 "bNr" = (
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/item/soap/nanotrasen,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
@@ -12345,6 +12357,7 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "bPC" = (
+/obj/item/reagent_containers/rag/towel,
 /obj/machinery/shower{
 	pixel_y = 19
 	},
@@ -12394,11 +12407,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "bQb" = (
-/obj/item/reagent_containers/rag/towel,
-/obj/effect/decal/cleanable/cobweb{
-	icon_state = "cobweb2"
+/obj/structure/chair/foldingchair{
+	dir = 1
 	},
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
 "bQf" = (
 /obj/structure/disposalpipe/segment{
@@ -12768,11 +12780,17 @@
 /turf/open/floor/plasteel/white/corner,
 /area/hallway/secondary/entry)
 "bVW" = (
-/obj/structure/bookcase,
+/obj/effect/turf_decal/loading_area{
+	dir = 5;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
 /turf/open/floor/plating/asteroid/layenia,
 /area/security/prison)
 "bVZ" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/cobweb{
+	icon_state = "cobweb2"
+	},
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "bWp" = (
@@ -13265,9 +13283,6 @@
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
 "ceb" = (
-/obj/machinery/computer/libraryconsole/bookmanagement,
-/obj/structure/table,
-/obj/effect/decal/cleanable/cobweb,
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_y = 16
@@ -13357,8 +13372,7 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "cfe" = (
-/obj/structure/table,
-/turf/open/floor/plating/asteroid/layenia/garden,
+/turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "cfi" = (
 /obj/structure/lattice/catwalk,
@@ -13443,7 +13457,7 @@
 	},
 /area/engine/break_room)
 "cga" = (
-/obj/item/bikehorn/rubberducky,
+/obj/effect/decal/cleanable/vomit,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "cgj" = (
@@ -13792,10 +13806,8 @@
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
 "cky" = (
-/obj/structure/chair/foldingchair{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/layenia/garden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "ckz" = (
 /obj/effect/decal/cleanable/molten_object,
@@ -13811,11 +13823,6 @@
 /turf/closed/wall/r_wall,
 /area/engine/engineering/reactor_control)
 "ckM" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
 /obj/machinery/camera{
 	c_tag = "Prison Common Room 4";
 	dir = 8;
@@ -13854,10 +13861,8 @@
 	},
 /area/security/main)
 "clp" = (
-/obj/machinery/door/airlock{
-	name = "Unisex Restroom"
-	},
-/turf/open/floor/plasteel/freezer,
+/obj/structure/trash_pile,
+/turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
 "clH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -14541,13 +14546,8 @@
 	},
 /area/engine/break_room)
 "cvR" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/freezer,
+/obj/structure/bookcase,
+/turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
 "cvZ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -15111,15 +15111,10 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness)
 "cEt" = (
-/obj/structure/toilet{
-	dir = 1
-	},
-/obj/item/soap/nanotrasen,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	pixel_y = -1
-	},
-/turf/open/floor/plasteel/freezer,
+/obj/machinery/computer/libraryconsole/bookmanagement,
+/obj/structure/table,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
 "cEy" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -22872,6 +22867,7 @@
 	prison_radio = 1
 	},
 /obj/item/bedsheet/orange,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "eEk" = (
@@ -38528,10 +38524,12 @@
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/engineering)
 "iFP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1;
-	pixel_y = 16
+/obj/item/bikehorn/rubberducky,
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/obj/structure/toilet{
+	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
@@ -71722,6 +71720,7 @@
 	prison_radio = 1
 	},
 /obj/item/bedsheet/orange,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "rsp" = (
@@ -77053,6 +77052,7 @@
 	prison_radio = 1
 	},
 /obj/item/bedsheet/orange,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "sFO" = (
@@ -97308,9 +97308,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/science)
-"xKS" = (
-/turf/open/floor/plasteel/freezer,
-/area/security/prison)
 "xKV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -134268,7 +134265,7 @@ wGI
 wGI
 kMY
 ceb
-cky
+bDM
 bDM
 dMm
 kMY
@@ -134521,10 +134518,10 @@ aEL
 gFP
 aEL
 tLq
-tLq
-tLq
-tLq
 cfe
+iFP
+tLq
+bDM
 mdj
 bDM
 bDM
@@ -134777,9 +134774,9 @@ koo
 eWd
 koo
 aEL
-tLq
-tLq
-tLq
+bNr
+cga
+cky
 bVW
 bDM
 ckz
@@ -135034,10 +135031,10 @@ xMU
 xMU
 qcr
 aEL
-tLq
-tLq
+bPC
+cfe
 bNg
-bDM
+xZc
 mdj
 bDM
 bDM
@@ -135291,11 +135288,11 @@ xMU
 fgL
 qcr
 aEL
-tLq
-tLq
-cxB
-cxB
-cxB
+bVZ
+cky
+qbJ
+bDM
+bDM
 ckM
 cvI
 ktj
@@ -135549,10 +135546,10 @@ diE
 qcr
 aEL
 tLq
+tLq
+xZc
+bDM
 kMY
-iFP
-xKS
-cga
 kMY
 kMY
 kMY
@@ -135806,13 +135803,13 @@ fnv
 cgt
 aEL
 tLq
-kMY
-bPC
-bVZ
-bNr
-clp
 cvR
-cEt
+bDM
+bDM
+kMY
+clp
+mdj
+mdj
 kMY
 tLq
 tLq
@@ -136063,13 +136060,13 @@ dVe
 xcE
 aEL
 tLq
-kMY
+cEt
 bQb
-bNr
+bDM
 acM
-kMY
-kMY
-kMY
+bDM
+bDM
+tLq
 sid
 hHY
 hHY
@@ -136320,10 +136317,10 @@ edP
 xcE
 aEL
 tLq
-kMY
-kMY
-pyf
 tLq
+bDM
+pyf
+kMY
 tLq
 tLq
 tLq
@@ -136580,7 +136577,7 @@ tLq
 tLq
 tLq
 tLq
-tLq
+kMY
 tLq
 tLq
 tLq
