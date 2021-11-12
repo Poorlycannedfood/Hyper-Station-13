@@ -291,4 +291,8 @@
 	T.adjustWeeds(-rand(1,volume / 5))
 	return 1
 
+/datum/reagent/consumable/semen/on_tray(obj/machinery/hydroponics/T, volume, mob/user)
+	T.adjustNutri(round(volume * 0.5))
+	return 1
+		
 #undef DEFAULT_ACT_MUTAGEN
