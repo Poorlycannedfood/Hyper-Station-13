@@ -127,7 +127,7 @@
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/P)
 	..()
 	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
-		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
+		if(!P.nodamage && (P.damage_type == BURN))
 			var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
 			GLOB.bombers += boom_message
 			message_admins(boom_message)
@@ -150,8 +150,12 @@
 			W.update_icon()
 		else
 			var/turf/T = get_turf(src)
-			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
+			if(!HAS_TRAIT(user, TRAIT_DUMB))
+				to_chat(user, "<span class='warning'>That would be extremely stupid.</span>")
+				message_admins("[ADMIN_LOOKUPFLW(user)] tried to trigger a fueltank explosion via welding tool at [ADMIN_VERBOSEJMP(T)].")
+				return
 
+			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
 			var/message_admins = "[ADMIN_LOOKUPFLW(user)] triggered a fueltank explosion via welding tool at [ADMIN_VERBOSEJMP(T)]."
 			GLOB.bombers += message_admins
 			message_admins(message_admins)
