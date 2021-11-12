@@ -1638,6 +1638,7 @@
 	c_tag = "Prison Cell 3";
 	network = list("ss13","prison")
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "adt" = (
@@ -1660,6 +1661,7 @@
 	c_tag = "Prison Cell 2";
 	network = list("ss13","prison")
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "adv" = (
@@ -1691,6 +1693,7 @@
 	c_tag = "Prison Cell 1";
 	network = list("ss13","prison")
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "ady" = (
