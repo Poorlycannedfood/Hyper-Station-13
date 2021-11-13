@@ -89,7 +89,7 @@
 				OpenFire()
 			if(L.Adjacent(src) && (L.stat != CONSCIOUS))
 				if(vore_active && L.devourable == TRUE)
-					vore_attack(src,L,src)
+					INVOKE_ASYNC(src, .proc/vore_attack, src, L, src)
 					LoseTarget()
 		else
 			devour(L)
