@@ -875,7 +875,7 @@
 	name = "cydonian helmet"
 	desc = "A helmet designed with both form and function in mind, it protects the user against physical trauma and hazardous conditions while also having polychromic light strips."
 	icon_state = "knight_cydonia"
-	item_state = "knight_yellow"
+	item_state = "knight_cydonia"
 	item_color = null
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | LAVA_PROOF
@@ -898,7 +898,7 @@
 	on = !on
 
 	if(on)
-		set_light(brightness_on)
+		set_light(brightness_on, 5, energy_color)
 	else
 		set_light(0)
 	for(var/X in actions)
