@@ -1609,25 +1609,16 @@
 /turf/open/floor/engine/layenia,
 /area/layenia)
 "acn" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/engine/layenia,
-/area/layenia)
-"aco" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/floor/engine/layenia,
-/area/layenia)
-"acp" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
 	dir = 8
 	},
-/turf/open/floor/engine/layenia,
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
+"acp" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
 "acq" = (
 /obj/effect/turf_decal/stripes/line{
@@ -3338,26 +3329,27 @@
 /turf/open/floor/plating/layenia,
 /area/layenia)
 "afb" = (
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/layenia,
+/obj/structure/closet/crate/engineering,
+/turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
 "afc" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/light{
-	pixel_y = -1
-	},
-/turf/open/floor/plating/layenia,
+/obj/structure/sign/warning/fire,
+/turf/closed/wall/r_wall,
 /area/layenia)
 "afd" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
+/obj/effect/turf_decal/stripes/end{
+	dir = 8
+	},
+/obj/structure/fence{
+	dir = 4
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia)
 "afe" = (
-/obj/effect/turf_decal/stripes/end{
-	dir = 8
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
+/obj/effect/turf_decal/stripes/line,
 /obj/structure/fence{
 	dir = 4
 	},
@@ -3387,16 +3379,6 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
 "afg" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/fence{
-	dir = 4
-	},
-/turf/open/floor/plating/layenia,
-/area/layenia)
-"afh" = (
 /obj/effect/turf_decal/stripes/end{
 	dir = 4
 	},
@@ -3405,6 +3387,15 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia)
+"afh" = (
+/obj/structure/lattice,
+/obj/structure/transit_tube/horizontal,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/chasm/cloud,
+/area/layenia/cloudlayer)
 "afi" = (
 /obj/effect/turf_decal/stripes/end{
 	dir = 1
@@ -9184,6 +9175,11 @@
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
+/area/crew_quarters/dorms)
+"bcM" = (
+/obj/structure/table/wood,
+/obj/item/book/lorebooks/engrams,
+/turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "bdd" = (
 /obj/structure/cable/yellow{
@@ -19940,6 +19936,9 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
@@ -32117,6 +32116,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
+"hcH" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 12
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 10
+	},
+/area/engine/break_room)
 "hcQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -42710,13 +42720,6 @@
 	icon_state = "floor_plate"
 	},
 /area/quartermaster/office)
-"jOA" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/closet/crate/engineering,
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "jOH" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -48652,6 +48655,9 @@
 /obj/structure/window{
 	dir = 4
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_x = 5
+	},
 /obj/item/folder/yellow,
 /obj/item/stamp/ce,
 /turf/open/floor/plasteel,
@@ -49212,15 +49218,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore/secondary)
-"lJM" = (
-/obj/structure/lattice,
-/obj/structure/transit_tube/horizontal,
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
-	},
-/turf/open/chasm/cloud,
-/area/layenia/cloudlayer)
 "lJV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -59452,6 +59449,9 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -67283,6 +67283,9 @@
 	pixel_x = 2;
 	pixel_y = 5
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab)
 "qqY" = (
@@ -67629,15 +67632,6 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
-"qur" = (
-/obj/structure/lattice,
-/obj/machinery/camera{
-	c_tag = "MiniSat Walkway 1";
-	network = list("minisat");
-	start_active = 1
-	},
-/turf/open/chasm/cloud,
-/area/layenia/cloudlayer)
 "quu" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -69490,6 +69484,9 @@
 	name = "Science Requests Console";
 	pixel_x = -30;
 	receive_ore_updates = 1
+	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
@@ -74082,6 +74079,9 @@
 /obj/item/stack/sheet/metal/ten,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/stack/sheet/glass/fifty,
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
 "rSj" = (
@@ -79643,6 +79643,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "tnl" = (
@@ -80406,7 +80409,6 @@
 /area/science/lab)
 "tzG" = (
 /obj/structure/table/reinforced,
-/obj/item/trash/plate,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
@@ -80418,6 +80420,9 @@
 	},
 /obj/structure/sign/painting/library{
 	pixel_y = 28
+	},
+/obj/item/book/lorebooks/engrams{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
@@ -84927,10 +84932,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
-"uEp" = (
-/obj/structure/sign/warning/fire,
-/turf/closed/wall/r_wall,
-/area/layenia)
 "uEq" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/soda_cans/shamblers{
@@ -119545,7 +119546,7 @@ snf
 bqr
 ikF
 dvZ
-nhn
+bcM
 oHY
 rEj
 aSV
@@ -135718,7 +135719,7 @@ yiG
 arX
 sna
 tzG
-nPm
+hcH
 iuR
 slD
 cFN
@@ -142394,7 +142395,7 @@ adz
 adz
 aeI
 aeV
-afb
+tBc
 xJU
 tOA
 sWn
@@ -142651,7 +142652,7 @@ fkk
 aet
 aeJ
 aeV
-afb
+tBc
 xJU
 vXm
 aai
@@ -142908,13 +142909,13 @@ aej
 aev
 aeK
 aeV
-afc
+rhG
 xJU
 vXm
 oRR
 vXm
 xJU
-qqi
+afh
 gJF
 gPq
 foH
@@ -143165,13 +143166,13 @@ aek
 aew
 aeK
 aeV
-afb
+tBc
 xJU
 qrB
 wlS
 ijQ
 xJU
-lJM
+qqi
 gJF
 gPq
 foH
@@ -143422,7 +143423,7 @@ adz
 aey
 aeK
 aeV
-afb
+tBc
 xJU
 pjc
 iym
@@ -143679,11 +143680,11 @@ lcY
 aez
 aeK
 aeV
-afb
-acm
-acm
+tBc
+tBc
+tBc
 acp
-acm
+tBc
 eAA
 qqi
 gJF
@@ -143936,11 +143937,11 @@ ael
 aeA
 aeL
 aeW
-afd
-acm
-acm
-acm
-acm
+tBc
+tBc
+tBc
+acp
+tBc
 eAA
 qqi
 gJF
@@ -144193,12 +144194,12 @@ tBc
 rot
 huR
 huR
-lty
-acn
-aco
-aco
-aco
-eAA
+tBc
+tBc
+tBc
+acp
+tBc
+afc
 qqi
 gJF
 gPq
@@ -144450,13 +144451,13 @@ tBc
 rot
 huR
 huR
-ram
-cec
-cec
-cec
-jOA
-uEp
-qqi
+tBc
+tBc
+tBc
+acp
+tBc
+eAA
+afh
 gJF
 gPq
 foH
@@ -144710,10 +144711,10 @@ huR
 tBc
 tBc
 tBc
+acp
 tBc
 xiz
-eAA
-lJM
+qqi
 gJF
 gPq
 foH
@@ -144967,9 +144968,9 @@ huR
 tBc
 tBc
 tBc
+acp
 tBc
-afe
-gPq
+afd
 qqi
 gJF
 gPq
@@ -145224,9 +145225,9 @@ huR
 tBc
 tBc
 tBc
+acp
 tBc
-afg
-gPq
+afe
 qqi
 gJF
 gPq
@@ -145481,9 +145482,9 @@ aeX
 tBc
 tBc
 tBc
+acp
 tBc
-afh
-gPq
+afg
 qqi
 gJF
 gPq
@@ -145738,9 +145739,9 @@ aeZ
 tBc
 tBc
 tBc
+acp
 tBc
 xiz
-gPq
 qqi
 gJF
 gPq
@@ -145995,9 +145996,9 @@ aeZ
 tBc
 tBc
 tBc
+acp
 tBc
-afe
-gPq
+afd
 qqi
 gJF
 gPq
@@ -146252,9 +146253,9 @@ afa
 tBc
 tBc
 tBc
+acn
 tBc
-afg
-gPq
+afe
 qqi
 gJF
 gPq
@@ -146510,8 +146511,8 @@ tBc
 tBc
 tBc
 tBc
-afh
-gPq
+tBc
+afg
 qqi
 gJF
 gPq
@@ -146766,9 +146767,9 @@ aed
 xiz
 aeb
 aec
+aec
 aed
 xiz
-qur
 qqi
 gJF
 gPq
