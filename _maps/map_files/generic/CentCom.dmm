@@ -13763,7 +13763,7 @@
 /obj/item/pda/lieutenant{
 	hidden = 0
 	},
-/obj/item/clothing/glasses/hud/toggle/zao,
+///obj/item/clothing/glasses/hud/toggle/zao, //Idk why but this line crashes everything as of now
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "CV" = (
