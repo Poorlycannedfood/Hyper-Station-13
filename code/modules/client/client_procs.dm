@@ -176,8 +176,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 #if (PRELOAD_RSC == 0)
 GLOBAL_LIST_EMPTY(external_rsc_urls)
 #endif
-GLOBAL_LIST_EMPTY(underage_ckeys)
-GLOBAL_LIST_EMPTY(already_logged_fucking_kill) //no one told how to check for reconnects
+//GLOBAL_LIST_EMPTY(underage_ckeys)
+//GLOBAL_LIST_EMPTY(already_logged_fucking_kill) //no one told how to check for reconnects
 /client/New(TopicData)
 	world.SetConfig("APP/admin", ckey, "role=admin")			//CITADEL EDIT - Allows admins to reboot in OOM situations
 	var/tdata = TopicData //save this for later use
@@ -287,7 +287,9 @@ GLOBAL_LIST_EMPTY(already_logged_fucking_kill) //no one told how to check for re
 		GLOB.player_details[ckey] = player_details
 
 	. = ..()	//calls mob.Login()
-
+	
+	//Very funny but this will pretty much do nothing other than being annoying
+	/*
 	if(ckey in GLOB.underage_ckeys)
 		to_chat(src, "Yeah no, you're not getting in for this round.")
 		qdel(src)
@@ -306,6 +308,7 @@ GLOBAL_LIST_EMPTY(already_logged_fucking_kill) //no one told how to check for re
 			qdel(src)
 			return
 		GLOB.already_logged_fucking_kill += ckey
+		*/
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)

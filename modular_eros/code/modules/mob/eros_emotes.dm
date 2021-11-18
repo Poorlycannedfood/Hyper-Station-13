@@ -79,6 +79,8 @@
 			'modular_eros/sound/voice/farts/fart6.ogg'\
 		), 50, 1)
 
+		//Iunno about this one yet chief
+		/*
 		var/turf/open/T = get_turf(user)
 		var/datum/gas_mixture/stank = new
 		var/list/cached_gases = stank.gases
@@ -86,6 +88,7 @@
 		stank.temperature = T20C // without this the room would eventually freeze and miasma mining would be easier
 		T.assume_air(stank)
 		T.air_update_turf()
+		*/
 
 		var/delay = 300 + rand(0, 150)
 		user.fart_cooldown = TRUE
