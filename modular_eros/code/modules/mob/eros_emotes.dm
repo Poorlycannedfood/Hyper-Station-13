@@ -6,8 +6,8 @@
 
 /datum/emote/living/squint
 	key = "squint"
-	key_third_person = "squints their head"
-	message = "squints their head."
+	key_third_person = "squints their eyes"
+	message = "squints their eyes." // i dumb
 	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/fart
@@ -16,7 +16,13 @@
 	message = "farts out shitcode."
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/fart/run_emote(mob/user, params, type_override, intentional)
+/mob/living
+	var/fart_cooldown = 0
+
+/datum/emote/living/fart/run_emote(mob/living/user, params, type_override, intentional)
+	if(user.fart_cooldown)
+		to_chat(user, "<span class='warning'>You try your hardest, but no shart comes out.</span>")
+		return
 	var/static/list/fart_emotes = list( //cope goonies
 		" lets out a girly little 'toot' from their butt.",
 		" farts loudly!",
@@ -72,4 +78,24 @@
 			'modular_eros/sound/voice/farts/fart5.ogg',\
 			'modular_eros/sound/voice/farts/fart6.ogg'\
 		), 50, 1)
-	
+
+		//Iunno about this one yet chief
+		/*
+		var/turf/open/T = get_turf(user)
+		var/datum/gas_mixture/stank = new
+		var/list/cached_gases = stank.gases
+		cached_gases[/datum/gas/miasma] += 7*MIASMA_CORPSE_MOLES //eh.
+		stank.temperature = T20C // without this the room would eventually freeze and miasma mining would be easier
+		T.assume_air(stank)
+		T.air_update_turf()
+		*/
+
+		var/delay = 300 + rand(0, 150)
+		user.fart_cooldown = TRUE
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/_fart_renew_msg, user), delay)
+
+/proc/_fart_renew_msg(mob/living/user)
+	if(QDELETED(user))
+		return
+	to_chat(user, "<span class='notice'>Your ass feels full, again.</span>")
+	user.fart_cooldown = 0

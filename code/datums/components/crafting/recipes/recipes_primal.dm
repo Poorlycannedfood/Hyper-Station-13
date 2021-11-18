@@ -45,13 +45,6 @@
 				/obj/item/stack/sheet/animalhide/goliath_hide = 2) //it takes 4 goliaths to make 1 cloak if the plates are skinned
 	category = CAT_PRIMAL
 
-/datum/crafting_recipe/loincloth
-	name = "Leather Loincloth"
-	result = /obj/item/clothing/under/tribal/loincloth
-	time = 15
-	reqs = list(/obj/item/stack/sheet/leather = 2) //the rope is leather
-	category = CAT_PRIMAL
-
 /datum/crafting_recipe/drakecloak
 	name = "Ash Drake Armour"
 	result = /obj/item/clothing/suit/hooded/cloak/drake
