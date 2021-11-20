@@ -86,7 +86,7 @@
 
 /obj/item/reagent_containers/food/snacks/sashimi
 	name = "carp sashimi"
-	desc = "Celebrate surviving attack from hostile alien lifeforms by hospitalising yourself."
+	desc = "Delicious strips of carp meat with soy sauce to dip them in, if the cook made it right, you won't end in the medbay."
 	icon_state = "sashimi"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/capsaicin = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/capsaicin = 5)
