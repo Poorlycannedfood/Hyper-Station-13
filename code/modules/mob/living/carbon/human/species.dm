@@ -513,7 +513,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.hidden_underwear)
 				H.underwear = "Nude"
 			else
-				H.saved_underwear = H.underwear
+				H.underwear = H.saved_underwear
 				var/datum/sprite_accessory/underwear/bottom/B = GLOB.underwear_list[H.underwear]
 				if(B)
 					var/mutable_appearance/MA = mutable_appearance(B.icon, B.icon_state, -BODY_LAYER)
@@ -525,7 +525,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.hidden_undershirt)
 				H.undershirt = "Nude"
 			else
-				H.saved_undershirt = H.undershirt
+				H.undershirt = H.saved_undershirt
 				var/datum/sprite_accessory/underwear/top/T = GLOB.undershirt_list[H.undershirt]
 				if(T)
 					var/mutable_appearance/MA
@@ -541,7 +541,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.hidden_socks)
 				H.socks = "Nude"
 			else
-				H.saved_socks = H.socks
+				H.socks = H.saved_socks
 				var/datum/sprite_accessory/underwear/socks/S = GLOB.socks_list[H.socks]
 				if(S)
 					var/digilegs = (DIGITIGRADE in species_traits) ? "_d" : ""
