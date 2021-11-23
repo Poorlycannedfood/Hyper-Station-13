@@ -76,7 +76,8 @@
 			'modular_eros/sound/voice/farts/fart3.ogg',\
 			'modular_eros/sound/voice/farts/fart4.ogg',\
 			'modular_eros/sound/voice/farts/fart5.ogg',\
-			'modular_eros/sound/voice/farts/fart6.ogg'\
+			'modular_eros/sound/voice/farts/fart6.ogg',\
+			'modular_eros/sound/voice/farts/fart7.ogg'\
 		), 50, 1)
 
 		//Iunno about this one yet chief
